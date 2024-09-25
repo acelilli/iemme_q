@@ -25,6 +25,13 @@ Un'interfaccia viene IMPLEMENTATA.
 ## Concetto di information hiding e incapsulamento
 Con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene ad una classe viene descritto al suo interno. È buona norma non far acceder direttamente gli utenti agli attributi di una classe, quindi utiliziamo i modificatori di accesso (public, private) consentendo il loro accesso solo tramite i metodi get e set, che permettono di filtrare il dato in entrata e il dato in uscita. Con private posso quindi nascondere i dettagli costruttivi (attributi, metodi, filtri) della mia classe (e quindi delle sue istanze), questo è il concetto di information hiding.
 
+## Che cos'è ToString()?
+È un metodo predefinito appartenente alla classe Object che restituisce una stringa che ci dice il tipo dell'oggetto per il quale lo invochiamo.
+
+## Che cosa vuol dire override?
+
+## CHe cos'è una stored procedure?
+Una stored proedure è un innesto di linguaggo di programmazione che ci permette di fare DDL (es. con le tablle temporanee), DML e QL.
 
 ## stringa di comando per fare push
 git remote add origin https://github.com/acelilli/iemme_q.git
