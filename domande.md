@@ -28,5 +28,7 @@ Con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene 
 
 ## stringa di comando per fare push
 git remote add origin https://github.com/acelilli/iemme_q.git
+
 git branch -M main
+
 git push -u origin main
