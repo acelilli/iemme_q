@@ -35,6 +35,8 @@ Una stored proedure è un innesto di linguaggo di programmazione che ci permette
 
 ## Principi SOLID
 
+## Che cos'è il binding dinamico?
+
 ## stringa di comando per fare push
 git remote add origin https://github.com/acelilli/iemme_q.git
 
