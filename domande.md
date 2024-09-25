@@ -30,8 +30,10 @@ Con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene 
 
 ## Che cosa vuol dire override?
 
-## CHe cos'è una stored procedure?
+## Che cos'è una stored procedure?
 Una stored proedure è un innesto di linguaggo di programmazione che ci permette di fare DDL (es. con le tablle temporanee), DML e QL.
+
+## Principi SOLID
 
 ## stringa di comando per fare push
 git remote add origin https://github.com/acelilli/iemme_q.git
