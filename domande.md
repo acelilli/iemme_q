@@ -34,8 +34,72 @@ Con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene 
 Una stored proedure è un innesto di linguaggo di programmazione che ci permette di fare DDL (es. con le tablle temporanee), DML e QL.
 
 ## Principi SOLID
+Sono regole che devono sempre eseguite quando si sviluppa un nuovo software.Sono principi di web coding
+
+
+S : single responsability principle principio di singola responsabilità .
+
+
+O: Open close ovvero principio di estendibilità cioè l’ereditarietà 
+
+
+L Liskov  ovvero gli oggetti devono poter essere sostituiti con dei sottotipi senza alterare il comportamento che li caratterizza. 
+(polimorfismo)
+
+
+I Interface integration principle cioè è preferibile l’implementazione di  più interfacce specifiche che non di un generica 
+
+
+D Dependency Invertion  una classe dovrebbe dipendere dall’astrazioni e non da classi concrete. 
+
+
+
 
 ## Che cos'è il binding dinamico?
+Quando l’istanza di una classe madre si specializza nel tipo della classe figlia.
+
+## Cos’è LINQ?
+Language Integrate Query è una funzionalità di .NET che consente di eseguire query su diverse fonti in modo uniforme. Integra la sintassi delle query direttamente il linguaggio di programmazione.  (posso interrogare e trasformare??? i dati ). 
+
+
+## Cos’è il dbset ?
+È un contenitore di tuple, la tupla è un riga (un record). 
+
+## Cos’è il singleton?
+E’ un parttern che garantisce che abbia la creazione di una singola istanza e fornisca un accesso globale a essa.
+
+
+## Cos’è una Stored Procedure?
+Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML , QL.
+
+## Cos'è lo using ?
+Lo using alloca variabili all'interno del suo contesto dette disposable, cioè alla sua conclusione grazie al garabage collector vengono eliminate dalla memoria. 
+
+
+## Cos’è il BCL?
+Il BCL (Base Class Library) è una parte fondamentale del framework .NET che offre un'ampia gamma di classi e metodi per supportare lo sviluppo di applicazioni, consentendo agli sviluppatori di risparmiare tempo e sforzo grazie alla disponibilità di funzionalità già pronte e testate.
+
+
+## Cosa sono le proprerties? 
+Sono un costrutto utile per gestire l’accesso e la modifica degli attributi di un oggetto in modo controllato, facilitando l’incapsulamento. Questi forniscono i metodi get e set per accedere e modificare i valori dei campi privati.
+
+## Qual è la differenza tra un classe e un oggetto?
+la classe è come un progetto o un modello che stabilisce come dovrebbe essere un oggetto, mentre l'oggetto è l'effettiva realizzazione di quel modello, con caratteristiche e dati specifici.
+
+
+## Com’è fatta una classe ?
+Si può definire come una aggregazione di metodi e attributi. 
+
+
+## Cos’è un attributo?
+È la proprietà di un oggetto
+
+
+
+## Cos’è un metodo ? 
+È un sottoprogramma o una funzione che esegue delle operazioni.
+
+
 
 ## stringa di comando per fare push
 git remote add origin https://github.com/acelilli/iemme_q.git
