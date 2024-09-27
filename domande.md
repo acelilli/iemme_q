@@ -14,8 +14,8 @@ Una lista risolve il problema degli array statici: è una raccolta di dati ch po
 ## Che cos'è un array?
 Un array è una raccolta di dati omogenea e statica. Cioè un array ha una lunghezza fissa e al suo interno i dati sono tutti dello stesso tipo.
 
-## Se scrivo IEsempio<T>?
-IEsempio è un'interfaccia. <T> rappresenta un tipo di dato generico.
+## Se scrivo IEsempio"<"T">"?
+IEsempio è un'interfaccia. "<"T">" rappresenta un tipo di dato generico.
 L'elemento interfaccia è un costrutto che contiene esclusivamente dei metodi senza corpo. È in realtà un elenco di metodi senza corpo quindi tecnicamente non è una classe, ma ci dice esclusivamente cosa si è costretti ad implementare a livello di metodi Al suo interno quindi NON ci sono attributi.
 Un'interfaccia viene IMPLEMENTATA.
 
