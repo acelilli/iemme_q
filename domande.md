@@ -19,6 +19,9 @@ IEsempio è un'interfaccia. "<"T">" rappresenta un tipo di dato generico.
 L'elemento interfaccia è un costrutto che contiene esclusivamente dei metodi senza corpo. È in realtà un elenco di metodi senza corpo quindi tecnicamente non è una classe, ma ci dice esclusivamente cosa si è costretti ad implementare a livello di metodi Al suo interno quindi NON ci sono attributi.
 Un'interfaccia viene IMPLEMENTATA.
 
+## Che cos'è static?
+Può essere attributo o metodo di classe.
+
 ## Che cos'è un metodo statico?
 È un metodo che non ha bisogno dell'istanza di una classe per essere richiamato I metodi static vengono allocati immediatamente all'inizio del programma. Un esempio di metodo static è il MAIN che rappresenta l'unizio del mio programma.
 
