@@ -110,7 +110,10 @@ Si può definire come una aggregazione di metodi e attributi.
 
 ## Che cos'è l'ORM?
 
+## Perché, all'interno di una classein C# che contiene delle foreign key,l'attributo public virtual MiaClasseRifNavigation? è nullable?
+`public virtual MiaClasseRifNavigation? {get; set}`
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 
 ## stringa di comando per fare push
 git remote add origin https://github.com/acelilli/iemme_q.git
