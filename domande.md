@@ -71,7 +71,6 @@ Quando l’istanza di una classe madre si specializza nel tipo della classe figl
 ## Cos’è LINQ?
 Language Integrate Query è una funzionalità di .NET che consente di eseguire query su diverse fonti in modo uniforme. Integra la sintassi delle query direttamente il linguaggio di programmazione.  (posso interrogare e trasformare??? i dati ). 
 
-
 ## Cos’è il dbset ?
 È un contenitore di tuple, la tupla è un riga (un record). 
 
@@ -96,18 +95,20 @@ Sono un costrutto utile per gestire l’accesso e la modifica degli attributi di
 ## Qual è la differenza tra un classe e un oggetto?
 la classe è come un progetto o un modello che stabilisce come dovrebbe essere un oggetto, mentre l'oggetto è l'effettiva realizzazione di quel modello, con caratteristiche e dati specifici.
 
-
 ## Com’è fatta una classe ?
 Si può definire come una aggregazione di metodi e attributi. 
-
 
 ## Cos’è un attributo?
 È la proprietà di un oggetto
 
-
-
 ## Cos’è un metodo ? 
 È un sottoprogramma o una funzione che esegue delle operazioni.
+
+## Definizione di Foreign Key e a cosa serve?
+
+## Che cos'è lo scaffolding?
+
+## Che cos'è l'ORM?
 
 
 
