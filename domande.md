@@ -19,6 +19,8 @@ IEsempio è un'interfaccia. "<"T">" rappresenta un tipo di dato generico.
 L'elemento interfaccia è un costrutto che contiene esclusivamente dei metodi senza corpo. È in realtà un elenco di metodi senza corpo quindi tecnicamente non è una classe, ma ci dice esclusivamente cosa si è costretti ad implementare a livello di metodi Al suo interno quindi NON ci sono attributi.
 Un'interfaccia viene IMPLEMENTATA.
 
+## Che cos'è il tipo generico e a cosa serve?
+
 ## Che cos'è static?
 Può essere attributo o metodo di classe.
 
@@ -113,7 +115,8 @@ Si può definire come una aggregazione di metodi e attributi.
 ## Perché, all'interno di una classein C# che contiene delle foreign key,l'attributo public virtual MiaClasseRifNavigation? è nullable?
 `public virtual MiaClasseRifNavigation? {get; set}`
 
-----------------------------------------------------------------------------------------------------------------------------------------------
+
+---
 
 ## stringa di comando per fare push
 git remote add origin https://github.com/acelilli/iemme_q.git
