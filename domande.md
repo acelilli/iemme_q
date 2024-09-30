@@ -53,10 +53,17 @@ I Interface integration principle cioè è preferibile l’implementazione di  p
 D Dependency Invertion  una classe dovrebbe dipendere dall’astrazioni e non da classi concrete. 
 
 
+## Definizione di polimorfismo:
+In una situazione di ereditarietà, per polimorfismo si intende la capacità di un oggetto di trasformarsi, cioè di modificare il tip della sua istanza, in questo caso si SPECIALIZZA. Questo procedimento si chiama BINDING DINAMICO. Per esempio quando istanziamo una superclasse Persona e specializziamo il suo oggetto nella sottoclasse Studente:
 
+Persona per = new Studente();
+
+In pratica stiamo sfruttando la capacità della superclasse di trasformarsi un una delle sue specifiche sottoclassi. Potremmo sfruttare il polimorfismo per, per esempio, per creare una lista di oggetti eterogenei.
+
+Si può utilizzare il polimorfismo in tutti i casi di ereditarietà, ad esempio abbiamo due tipi di polimorfismo: polimorfismo di classe e polimorfismo di interfaccia.
 
 ## Che cos'è il binding dinamico?
-Quando l’istanza di una classe madre si specializza nel tipo della classe figlia.
+Quando l’istanza di una classe madre si specializza nel tipo della classe figlia. Il binding dinamico avviene solo all'avvio del programma.
 
 ## Cos’è LINQ?
 Language Integrate Query è una funzionalità di .NET che consente di eseguire query su diverse fonti in modo uniforme. Integra la sintassi delle query direttamente il linguaggio di programmazione.  (posso interrogare e trasformare??? i dati ). 
