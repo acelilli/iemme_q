@@ -46,26 +46,26 @@ Una stored proedure è un innesto di linguaggo di programmazione che ci permette
 Sono regole che devono sempre eseguite quando si sviluppa un nuovo software.Sono principi di web coding
 
 
-S : single responsability principle principio di singola responsabilità .
+**S** : *Single Responsibility Principle*: il principio di singola responsabilità afferma che ogni classe dovrebbe avere una ed una sola responsabilità, interamente incapsulata al suo interno.
 
 
-O: Open close ovvero principio di estendibilità cioè l’ereditarietà 
+**O**: *Open/closed principle*: un'entità software dovrebbe essere aperta alle estensioni, ma chiusa alle modifiche. Ovvero principio di estendibilità, quindi, in un certo senso, contiene anche l'ereditarietà.
 
 
-L Liskov  ovvero gli oggetti devono poter essere sostituiti con dei sottotipi senza alterare il comportamento che li caratterizza. 
+**L**: *Liskov substitution principle*: secondo il principio di sostituzione di Liskov gli oggetti devono poter essere sostituiti con dei sottotipi senza alterare il comportamento che li caratterizza. 
 (polimorfismo)
 
 
-I Interface integration principle cioè è preferibile l’implementazione di  più interfacce specifiche che non di un generica 
+**I**: *Interface integration principle*: cioè è preferibile l’implementazione di  più interfacce specifiche che non di una più grande e generica. 
 
 
-D Dependency Invertion  una classe dovrebbe dipendere dall’astrazioni e non da classi concrete. 
+**D**: *Dependency inversion principle*:  una classe dovrebbe dipendere dall’astrazioni e non da classi concrete. 
 
 
 ## Definizione di polimorfismo:
 In una situazione di ereditarietà, per polimorfismo si intende la capacità di un oggetto di trasformarsi, cioè di modificare il tip della sua istanza, in questo caso si SPECIALIZZA. Questo procedimento si chiama BINDING DINAMICO. Per esempio quando istanziamo una superclasse Persona e specializziamo il suo oggetto nella sottoclasse Studente:
 
-Persona per = new Studente();
+`Persona per = new Studente();`
 
 In pratica stiamo sfruttando la capacità della superclasse di trasformarsi un una delle sue specifiche sottoclassi. Potremmo sfruttare il polimorfismo per, per esempio, per creare una lista di oggetti eterogenei.
 
@@ -75,13 +75,15 @@ Si può utilizzare il polimorfismo in tutti i casi di ereditarietà, ad esempio 
 Quando l’istanza di una classe madre si specializza nel tipo della classe figlia. Il binding dinamico avviene solo all'avvio del programma.
 
 ## Cos’è LINQ?
-Language Integrate Query è una funzionalità di .NET che consente di eseguire query su diverse fonti in modo uniforme. Integra la sintassi delle query direttamente il linguaggio di programmazione.  (posso interrogare e trasformare??? i dati ). 
+Language Integrate Query serve per inerrogare le strutture di dati attraverso .Net con una sintassi simile a quella di SQL.
+
+Cioè è una funzionalità di .NET che consente di eseguire query su diverse fonti in modo uniforme integrando la sintassi delle query direttamente nel linguaggio di programmazione. Grazie a LINQ possiamo interrogare i dati del database. 
 
 ## Cos’è il dbset ?
 È un contenitore di tuple, la tupla è un riga (un record). 
 
 ## Cos’è il singleton?
-E’ un parttern che garantisce che abbia la creazione di una singola istanza e fornisca un accesso globale a essa.
+E’ un parttern di programmazione che garantisce la creazione di una singola istanza fornisce un accesso globale a essa.
 
 ## Cos’è una Stored Procedure?
 Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML , QL.
@@ -114,6 +116,7 @@ Si può definire come una aggregazione di metodi e attributi. A livello di proge
 La foreign key, o il **VINCOLO DI INTEGRITÀ RELAZIONALE** è una chiave di riferimento ad una tabella esterna, sottoforma numerica. Serve a garantire l'integrità e la coerena dei dati  tra le due tabelle.
 - Una foreing key **non può** essere null;
 - Una foreign key **non può** fare riferimento ad una chiave primaria che non esiste.
+  
 Una foreign key è un **CONSTRAINT** cioè *impone un vincolo di controllo* su una colonna di associazione.
 
 Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella alla quale fa riferimento la foreign key, possiamo utilizzare la dicitura `ON DELETE CASCADE`.
@@ -123,8 +126,6 @@ Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella
 
 ## Che cos'è l'ORM?
 **ORM** = Object Relational Mapping, garantito o effettuato dall'entity framework. Cea un collegamento diretto tra le tabelle che si trovano nel database e i loro record. In altre parole: se una classe genera degli oggetti, gli oggetti sono a loro volta collegati alle *righe* delle tabelle. Quindi, creando un nuovo oggetto, creerò un nuovo record!
-
-## Che cos'è LINQ?
 
 ## Perché, all'interno di una classein C# che contiene delle foreign key, l'attributo public virtual MiaClasseRifNavigation? è nullable?
 `public virtual MiaClasseRifNavigation? {get; set}` 
