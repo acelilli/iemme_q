@@ -130,6 +130,13 @@ Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella
 ## Perché, all'interno di una classein C# che contiene delle foreign key, l'attributo public virtual MiaClasseRifNavigation? è nullable?
 `public virtual MiaClasseRifNavigation? {get; set}` 
 
+## Che cos'è .typeOf()? E come l'abbiamo utilizzato? 
+
+## Funzione di HASH e MD5:
+
+## Che cos'è una hash table?
+
+## Cos'è il CDN?
 
 ---
 
