@@ -145,6 +145,9 @@ Quando viene creata la struttura dei record in memoria, insieme ad essa viene cr
 
 L'indice è una struttura che ci permette una rapida scansione dei record di una tabella. Può essere necessario su una tabella con numerosissimi record, per interrogazioni frequenti.
 
+## Che vuol dire DOM e che cos'è?
+Il *Document Object Model* è la rappresentazione sottoforma di albero della struttura del documento.
+
 ---
 
 ## stringa di comando per fare push
