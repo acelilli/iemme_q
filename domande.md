@@ -30,7 +30,7 @@ Può essere attributo o metodo di classe che, quando associato alla parola chiav
 ## Concetto di information hiding e incapsulamento
 Con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene ad una classe viene descritto al suo interno. 
 
-È buona norma non far acceder direttamente gli utenti agli attributi di una classe, quindi utiliziamo i modificatori di accesso (public, private) consentendo il loro accesso solo tramite i metodi get e set, filtrando il dato in entrata e il dato in uscita. 
+È buona norma non far acceder direttamente gli utenti agli attributi e ai metodi di una classe, per farlo utiliziamo i modificatori di accesso (public, private) nascondendo i dettagli di implemenazione e le informazioni interne (logica applicaiva della classe), consentendo solo l'accesso alle informazioni necessarie. 
 
 Con *private* posso quindi nascondere i dettagli costruttivi (attributi, metodi, filtri) della mia classe (e quindi delle sue istanze), questo è il concetto di information hiding.
 
