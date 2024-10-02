@@ -37,8 +37,6 @@ Con *private* posso quindi nascondere i dettagli costruttivi (attributi, metodi,
 ## Che cos'è ToString()?
 È un metodo predefinito appartenente alla classe Object che restituisce una stringa che ci dice il tipo dell'oggetto per il quale lo invochiamo.
 
-## Che cosa vuol dire override?
-
 ## Che cos'è una stored procedure?
 Una stored proedure è un innesto di linguaggo di programmazione che ci permette di fare DDL (es. con le tablle temporanee), DML e QL.
 
@@ -137,6 +135,15 @@ Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella
 ## Che cos'è una hash table?
 
 ## Cos'è il CDN?
+
+## Che cos'è una Constraint? Un esempio?
+
+## Che cos'è l'override? E quando si verifica?
+
+## Che cos'è un indice nel contesto della una primary key?
+Quando viene creata la struttura dei record in memoria, insieme ad essa viene creato un indice associato ai singoli record. Grazie alla primary key possiamo scorrere molto più rapidamente la memoria e trovare i record associati, che è quindi un campo identificativo univoco che ci permette di operare in maniera **atomica**, cioè su una singola riga.
+
+L'indice è una struttura che ci permette una rapida scansione dei record di una tabella. Può essere necessario su una tabella con numerosissimi record, per interrogazioni frequenti.
 
 ---
 
