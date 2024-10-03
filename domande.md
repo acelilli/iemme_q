@@ -182,6 +182,9 @@ Il *Document Object Model* è la rappresentazione sottoforma di albero della str
 
 ## Qual è la differenza tra classe astratta e interfaccia? 
 
+## Che cos'è una tupla?
+È una sequenza di dati eterogenei. Tecnicamente è un array statico di object, che può corrispondere ad un record.
+
 ---
 
 ## stringa di comando per fare push
