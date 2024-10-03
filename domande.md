@@ -19,6 +19,7 @@ Un array è una raccolta di dati omogenea e statica. Cioè un array ha lunghezza
 
 ## Se scrivo IEsempio"<"T">"?
 In `IEsempio<T>` IEsempio rappresenta un'interfaccia, mentre `<T>` rappresenta un tipo di dato generico, cioè che potrà in seguito essere sostituito con qualsiasi altro tipo (es. una classe) a mia scelta.
+
 L'elemento interfaccia è un costrutto che contiene esclusivamente dei metodi senza corpo. È in realtà un elenco di metodi senza corpo quindi tecnicamente non è una classe, ci dice esclusivamente cosa si è **costretti** ad implementare a livello di metodi. Al suo interno quindi **non** ci sono attributi.
 Un'interfaccia viene **implementata**.
 
@@ -144,6 +145,7 @@ Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella
 `ht.Add("obj", new {Nome = "Valeria", Cognome = "Verdi"})`
 
 `Dictionary` associa ad una chiave un contenuto, cioè è una collezione di elementi combinati in coppie chiave-valore. È un elemento con tipizzazione forte, in cui possiamo specificare il tipo della nostra chiave e del nostro valore. Anche in questo caso l'ordinamento sarà **fittizio** poichè l'elenco preerva l'ordine dell'inserimento, ossia l'ordine sequenziale.
+
 `Dictionary<int, string> elenco = new Dictionary<int, string>();`
 
 `elenco.Add(0, "Studente uno);`
