@@ -132,6 +132,11 @@ Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella
 ## Che cos'è .typeOf()? E come l'abbiamo utilizzato? 
 
 ## Funzione di HASH e MD5:
+Un hash è un valore numerico generato da una funzione di Hashing. Gli hash sono utilizzati per confrontare per confrontare oggetti e per ottimizzare la ricerca in strutture di dati. In pratica è una stringa rappresentativa di un valore.
+
+MD5 è un algoritmo di cifratura non invertente al quale posso dare un testo e mi restituirà un codice (HASH) di 32 caratteri. Non è invertente nel senso che restituisce solo un certo numero di caratteri. Gli algortmi di hashting sono pubblici e vengono detti **riepologativi**. Vengono anche detti **generatori di impronta**.
+
+L'**impronta** è una funzione che mi ritorna un valore, viene detta di **digest**: se gli diamo dei valori diversi mi restituirà dei valori diversi, se gli do dei valoro uguali mi restituirà gli stessi valori.
 
 ## Che cos'è una Hash Table? E che cos'è il Dictionary?
 `Hashtable` è una collezione di elementi combinati in coppie chiave-valore, la cui chiave deve necessariamente essere di un tipo primitivo mentre i valori possono avere qualsiasi tipo. Questo fa si che sia un contenitore **non omogeneo** e si può accedere ai valori **solo** tramite la chiave, che è sempre il primo valore. L'hastable è un contenitore **sequenziale** quindi l'ordinamento non è possibile e non essendo omogeneo, o comunque visto che i suoi elementi non possono esere accumunati tra loro, non si può utilizzare LINQ in questo contesto Si usa una hashtable quando non ha importanza l'rdinamento degli elementi. Tuttavia è importante notare che troppa libertà sulla tipologia dei dati creerà difficoltà nella standardizzazione e quindi nella gestione dei dati.
@@ -173,6 +178,9 @@ L'indice è una struttura che ci permette una rapida scansione dei record di una
 ## Che vuol dire DOM e che cos'è?
 Il *Document Object Model* è la rappresentazione sottoforma di albero della struttura del documento.
 
+## Che cos'è il CSS?
+
+## Qual è la differenza tra classe astratta e interfaccia? 
 
 ---
 
