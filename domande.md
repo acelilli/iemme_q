@@ -26,7 +26,7 @@ Un'interfaccia viene **implementata**.
 ## Che cos'è il tipo generico e a cosa serve?
 
 ## Che cos'è static?
-Può essere attributo o metodo di classe che, quando associato alla parola chiave **static**, indica una proprietà o attributo allocato immediatamente all'inizio del programma: non avrà quindi bisogno dell'istanza di una classe per essere richiamato. Un esempio di metodo static è il *main* che rappresenta l'inizio del proramma.
+In C#, **static** è definito come attributo di classe, è una parola chiave che indica una proprietà o attributo allocato immediatamente all'inizio del programma: non avrà quindi bisogno dell'istanza di una classe per essere richiamato, mettendo a disposizione l'attributo o il metodo in qualsiasi punto del punto del programma. Un esempio di metodo static è il *main* che rappresenta l'inizio del programma.
 
 ## Concetto di information hiding e incapsulamento
 Nell'ambito della programmazione ad oggetti, con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene ad una classe viene descritto al suo interno. 
