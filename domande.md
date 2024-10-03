@@ -132,7 +132,30 @@ Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella
 
 ## Funzione di HASH e MD5:
 
-## Che cos'è una hash table?
+## Che cos'è una Hash Table? E che cos'è il Dictionary?
+`Hashtable` è una collezione di elementi combinati in coppie chiave-valore, la cui chiave deve necessariamente essere di un tipo primitivo mentre i valori possono avere qualsiasi tipo. Questo fa si che sia un contenitore **non omogeneo** e si può accedere ai valori **solo** tramite la chiave, che è sempre il primo valore. L'hastable è un contenitore **sequenziale** quindi l'ordinamento non è possibile e non essendo omogeneo, o comunque visto che i suoi elementi non possono esere accumunati tra loro, non si può utilizzare LINQ in questo contesto Si usa una hashtable quando non ha importanza l'rdinamento degli elementi. Tuttavia è importante notare che troppa libertà sulla tipologia dei dati creerà difficoltà nella standardizzazione e quindi nella gestione dei dati.
+
+`Hashtable ht = new HashTable()`
+
+`ht.Add(0, "Mario");`
+
+`ht.Add("pippo", 0.5f)`
+
+`ht.Add("obj", new {Nome = "Valeria", Cognome = "Verdi"})`
+
+`Dictionary` associa ad una chiave un contenuto, cioè è una collezione di elementi combinati in coppie chiave-valore. È un elemento con tipizzazione forte, in cui possiamo specificare il tipo della nostra chiave e del nostro valore. Anche in questo caso l'ordinamento sarà **fittizio** poichè l'elenco preerva l'ordine dell'inserimento, ossia l'ordine sequenziale.
+`Dictionary<int, string> elenco = new Dictionary<int, string>();`
+
+`elenco.Add(0, "Studente uno);`
+
+`elenco.Add(1, "Studente due);`
+
+## Cosa sono IEnumerable, ICollection e IList?
+`IEnumerable` è una interfaccia che contiene dei metodi basici. È utile quando si vuole semplicemente leggere gli elementi di una collezione senza bisogno di aggiungere, rimuovere o contarli.
+`ICollection` eredita da `IEnumerable` e vi aggiunge nuovi metodi, come `.Add()`. È utile quando, oltre a voler iterare su una collezione, si ha bisogno di modificarla, aggiungere o rimuovere elementi o conoscere la dimensione della collezione.
+`IList` eredita a sua volta da `ICollection`, con la specifica `.Add(T)`
+
+Perchè utilizzare `ICollection`? Per il principio **D** del **SOLID**: le classi dovrebbero dipendere da astrazioni e non da classi concrete Cioè, si dovrebbe sempre poter accedere ai metoi implementati da `ICollection`.
 
 ## Cos'è il CDN?
 
@@ -147,6 +170,7 @@ L'indice è una struttura che ci permette una rapida scansione dei record di una
 
 ## Che vuol dire DOM e che cos'è?
 Il *Document Object Model* è la rappresentazione sottoforma di albero della struttura del documento.
+
 
 ---
 
