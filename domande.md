@@ -29,7 +29,7 @@ Un'interfaccia viene **implementata**.
 Può essere attributo o metodo di classe che, quando associato alla parola chiave **static**, indica una proprietà o attributo allocato immediatamente all'inizio del programma: non avrà quindi bisogno dell'istanza di una classe per essere richiamato. Un esempio di metodo static è il *main* che rappresenta l'inizio del proramma.
 
 ## Concetto di information hiding e incapsulamento
-Con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene ad una classe viene descritto al suo interno. 
+Nell'ambito della programmazione ad oggetti, con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene ad una classe viene descritto al suo interno. 
 
 È buona norma non far acceder direttamente gli utenti agli attributi e ai metodi di una classe, per farlo utiliziamo i modificatori di accesso (public, private) nascondendo i dettagli di implemenazione e le informazioni interne (logica applicaiva della classe), consentendo solo l'accesso alle informazioni necessarie. 
 
