@@ -11,6 +11,8 @@ Object è la **superclasse** dalla quale derivano tutte le entità.
 ## Che cos'è la firma?
 È il modo con cui un metodo può essere richiamato. Due metodi non possono avere la stessa firma sebbene possano chiamarsi allo stesso modo. Le firme devono essere necessariamente diverse (cioè avere parametri diversi). Quando esistono dei metodi che hanno lo stesso nome ma firme diverse si dice che si sta facendo un OVERLOAD di parametri.
 
+## Che cos'è l'Overload?
+
 ## Che cos'è una lista?
 Una lista risolve il problema degli array statici: è una raccolta di dati che possono anche non essere dello stesso tipo, la lunghezza della lista è variabile, ogni elemento al suo intero potrà quindi occupare spazi non sequenziali in memoria. 
 
@@ -28,6 +30,9 @@ Un'interfaccia viene **implementata**.
 ## Che cos'è static?
 In C#, **static** è definito come attributo di classe, è una parola chiave che indica una proprietà o attributo allocato immediatamente all'inizio del programma: non avrà quindi bisogno dell'istanza di una classe per essere richiamato, mettendo a disposizione l'attributo o il metodo in qualsiasi punto del punto del programma. Un esempio di metodo static è il *main* che rappresenta l'inizio del programma.
 
+## Come funziona l'avvio del pogramma (static)?
+(sempre nell'ambito dello static)
+
 ## Concetto di information hiding e incapsulamento
 Nell'ambito della programmazione ad oggetti, con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene ad una classe viene descritto al suo interno. 
 
@@ -39,7 +44,23 @@ Con *private* posso quindi nascondere i dettagli costruttivi (attributi, metodi,
 È un metodo predefinito appartenente alla classe Object che restituisce una stringa che ci dice il tipo dell'oggetto per il quale lo invochiamo.
 
 ## Che cos'è una stored procedure?
-Una stored proedure è un innesto di linguaggo di programmazione che ci permette di fare DDL (es. con le tablle temporanee), DML e QL.
+Nel contesto del database una stored proedure è un innesto di linguaggo di programmazione che ci permette di fare DDL (es. con le tablle temporanee), DML e QL. Cioè ci permette di compiere un'azione complessa richiamandola in maniera semplice.
+
+Es. di Stored Procedure in cui inseriamo un valore in una tabella:
+`CREATE PROCEDURE inserimento_nominativo`
+`@nominativo VARCHAR(150)`
+`AS`
+`BEGIN`
+`  INSERT INTO Mia_Tabella(nome)`
+`  VALUES('Nome Cognome')`
+`END;`
+
+## Che cos'è una left join?
+Esempio di Join (che di default è INNER Join) quindi ci mostrerà tutti i record in persona che hanno una carta:
+`SELECT * FROM Carta`
+`JOIN Persona ON Carta.personaRif = Persona.personaID`
+Facendo una Left Join in questo caso otteremmo tutte le carte.
+
 
 ## Principi SOLID
 Sono regole che devono sempre eseguite quando si sviluppa un nuovo software.Sono principi di web coding
@@ -82,7 +103,11 @@ Cioè è una funzionalità di .NET che consente di eseguire query su diverse fon
 È un contenitore di tuple, la tupla è un riga (un record). 
 
 ## Cos’è il singleton?
-E’ un parttern di programmazione che garantisce la creazione di una singola istanza fornisce un accesso globale a essa.
+È un design pattern di programmazione che garantisce la creazione di una singola istanza, fornendo un accesso globale a essa.
+
+All'interno del DAO (Data Access Project)  che fa parte del DAL
+`private static PersonaDao instance;`
+...
 
 ## Cos’è una Stored Procedure?
 Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML , QL.
@@ -175,15 +200,61 @@ Quando viene creata la struttura dei record in memoria, insieme ad essa viene cr
 
 L'indice è una struttura che ci permette una rapida scansione dei record di una tabella. Può essere necessario su una tabella con numerosissimi record, per interrogazioni frequenti.
 
+## Che cos'è una Unique ed una chiave eletta?
+
 ## Che vuol dire DOM e che cos'è?
-Il *Document Object Model* è la rappresentazione sottoforma di albero della struttura del documento.
+Il *Document Object Model* è la rappresentazione sottoforma di albero della struttura del documento HTML. È formato dai tag che rappresentano i nodi dell'albero e possiamo accedere ai nodi tramite JavaScript utilizzando, ad esempio, `document.getElementByID()` per esempio.
+
+## Che signiica che l'HTML è stateless? 
+Se modifichiamo o inseriamo dei dati nell'HTML, i dati non vengono conservati: questo perché non vengono conservati nello *stato*.
 
 ## Che cos'è il CSS?
+Nell'ambito dei linguaggi di makup, il *Cascading Style Sheet* rappresenta lo stile del nostro documento che può essere associato al nostro documento HTML. È un insieme di regole che vengono applicate a tutti gli elementi del DOM, vanno quindi a modificare la grafica della nostra applicazione.
 
 ## Qual è la differenza tra classe astratta e interfaccia? 
 
 ## Che cos'è una tupla?
 È una sequenza di dati eterogenei. Tecnicamente è un array statico di object, che può corrispondere ad un record.
+
+## Che cos'è un'arrow function?
+
+## Perchè utilizziamo var e perchè usiamo let? Che cos'è const?
+
+## Che cos'è una View? E si possono fare delle proiezioni al suo interno?
+Nel contesto dei database, la View è una struttura, dichiarata in DDL, che può contenere Query language,  potrà quindi solamente leggere i dati. Possiamo dire che è temporanea poichè viene creata solamente per leggere. 
+
+Un'operazione di proiezione consente di determinare, ad esempio, delle singole colonne da una tabella per visualizzarne i dati. 
+
+`Esempio di codice qui`
+
+## Come funziona il protected?
+Data una situazione ereditaria, settando una property come protected, potranno accedervi **solo** una superclasse e i suoi discendenti. Invece con il private, potrà accedervi solo la classe stessa.
+
+## Internal invece?
+All'interno di un progetto fa sì che altre soluzioni non possono accedere alle informazioni delle altre, quindi racchiudendo tutte le informazioni all'interno di ciascuna singola soluzione.
+
+## Che cos'è readonly?
+è una parola chiave che utilizziamo per far sì che si possa avere accesso ad un dato in sola lettura. Cioè, questo dato non sarà in alcun modo modificabile.
+
+## Che cos'è il DAO?
+Il C# il **Dao** (Data Access Object) è un pattern di programmazione che rappresenta il legame tra il codice sorgente ed il database. // da integrare
+
+## Esempi di relazioni one to one, one to many e many to many?
+
+## Possiamo definire C# come fortemente o debolmente tipizzato?
+
+## Che cosa signifia override?
+È l'operazione che ci permette di ridefinire un attriuto o un metodo di una classe genitore. Nella classe genitore deve avere la parola chiave **abstract** che indica che quel metodo deve essere necessariamente implementato nelle sottoclassi.
+
+## Che cos'è la composizione e come viene utilizzata?
+
+## Che cos'è l'aggregazione e come viene utilizzata?
+
+## Che cos'è l'UML?
+**Unified Modeling Language**.
+
+## Che succederebbe se, in una situazione ereditaria, scrivessi un costritture parametrico nella superclasse?
+In una situazione ereditaria, scrivendo un costruttore parametrico sovrascrivo il costruttore di default! Quindi è bsempre bene dichiarare il costruttore senza parametri, quello di default, nella superclasse per non sovrascriverlo!
 
 ---
 
