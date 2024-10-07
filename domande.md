@@ -289,6 +289,14 @@ HTTP request e HTTP Response:
 - 400 client errors (es. quando si entra in una pagina che non esiste, es. quando di digita male)
 - 500 server errors (es. il server non è stato in grado di gestire una richiesta, ome un imprevisto interno gg)
 
+## Che cos'è MVC?
+È un pattern di programmazione che suddifide i file per i compiti, Model View Controller.
+- La *View* è l'unica parte in cui l'utente viene a contatto con il programma, es. è la parte in cui ci sarà HTML, CSS ecc.
+- Il *Controller* genera gli oggetti a partire dalle classi all'interno di Models e li salva nel database.
+- *Models* contiene le classi.
+
+## Che cos'è il TLD?
+
 
 ---
 
