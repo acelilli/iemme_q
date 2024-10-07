@@ -265,6 +265,9 @@ Prende ciò che c'è nella stagin area, gli da un codice identificativo, e salva
 
 ## Cosa sono i conflitti?
 
+## Che cos'è un CDN?
+*Contact Delivery Network* è un computer o un serve super ottimizzato, dedicato olo a delivery di un certo file, quindi fornendolo nella maniera più ottimizzata.
+
 ---
 
 ## stringa di comando per fare push
