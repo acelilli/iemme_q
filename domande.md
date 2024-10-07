@@ -268,6 +268,28 @@ Prende ciò che c'è nella stagin area, gli da un codice identificativo, e salva
 ## Che cos'è un CDN?
 *Contact Delivery Network* è un computer o un serve super ottimizzato, dedicato olo a delivery di un certo file, quindi fornendolo nella maniera più ottimizzata.
 
+## Qual è la differenza tra null e undefined in JavaScript?
+
+## Paradigma client-server:
+Design pattern architetturale.
+*Client*: qualsiasi strumento in grado di fare delle richieste http. Una architettura http deve stare a delle regole: il client utilizza il protocollo http per fare una richiesta. Una richiesta http è una richiesta di dati o servzi. Es. una API: cioè una tipologia di elemento che ci restituisce qualcosa alla richiesta.
+
+*Server*: è qualcosa a cui chiediamo i servizi.
+
+Richiesta HTTP: Hyper Text Transfer Protocol. Una richiesta HTTP è stateless: non conserva i dati della precedente richiesta. Per funzionare, al paradigma HTTP deve essere associata una *response*.
+
+HTTP request e HTTP Response:
+- **Http request** può essere effettuata in due modi: get e post. hanno specificato il mittente, il destinatario e un payload (il contenuto). Con il mio browser posso fare esclusivamente richieste *get*, per creare delle richieste di post ho bisogno di un simulatore.
+- **Http response** contiene il mittente, il destinatario, uno status code e un payload opzionale.
+
+## Status code:
+- 100 informativo
+- 200 OK
+- 300 rindirizzamento
+- 400 client errors (es. quando si entra in una pagina che non esiste, es. quando di digita male)
+- 500 server errors (es. il server non è stato in grado di gestire una richiesta, ome un imprevisto interno gg)
+
+
 ---
 
 ## stringa di comando per fare push
