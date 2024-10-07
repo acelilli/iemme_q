@@ -261,7 +261,9 @@ In una situazione ereditaria, scrivendo un costruttore parametrico sovrascrivo i
 ## Che cos'è la commit?
 Prende ciò che c'è nella stagin area, gli da un codice identificativo, e salva una copia degli elementi al suo interno.
 
-##
+## Che cos'è la modalità Fast Forward?
+
+## Cosa sono i conflitti?
 
 ---
 
