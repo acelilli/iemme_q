@@ -254,6 +254,15 @@ Il C# il **Dao** (Data Access Object) è un pattern di programmazione che rappre
 ## Che succederebbe se, in una situazione ereditaria, scrivessi un costritture parametrico nella superclasse?
 In una situazione ereditaria, scrivendo un costruttore parametrico sovrascrivo il costruttore di default! Quindi è bsempre bene dichiarare il costruttore senza parametri, quello di default, nella superclasse per non sovrascriverlo!
 
+## Che cos'è GIT?
+
+## Che cos'è la stagin area?
+
+## Che cos'è la commit?
+Prende ciò che c'è nella stagin area, gli da un codice identificativo, e salva una copia degli elementi al suo interno.
+
+##
+
 ---
 
 ## stringa di comando per fare push
