@@ -184,6 +184,7 @@ L'**impronta** è una funzione che mi ritorna un valore, viene detta di **digest
 
 ## 35. Cosa sono IEnumerable, ICollection e IList?
 `IEnumerable` è una interfaccia che contiene dei metodi basici. È utile quando si vuole semplicemente leggere gli elementi di una collezione senza bisogno di aggiungere, rimuovere o contarli.
+
 `ICollection` eredita da `IEnumerable` e vi aggiunge nuovi metodi, come `.Add()`. È utile quando, oltre a voler iterare su una collezione, si ha bisogno di modificarla, aggiungere o rimuovere elementi o conoscere la dimensione della collezione.
 `IList` eredita a sua volta da `ICollection`, con la specifica `.Add(T)`
 
@@ -325,7 +326,9 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 
 ## 79. Che cos'è una Property?
 
+## 80. Che cos'è una transaction? E come è fatta?
 
+## 81. 
 ---
 
 ## stringa di comando per fare push
