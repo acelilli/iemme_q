@@ -328,7 +328,9 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 
 ## 80. Che cos'è una transaction? E come è fatta?
 
-## 81. 
+## 81. Com'è fatto un foglio HTML?
+
+## 82. Un metodo per collegarsi al DB senza entity framework? Quale libreria si usa?
 ---
 
 ## stringa di comando per fare push
