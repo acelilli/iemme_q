@@ -331,6 +331,10 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 ## 81. Com'è fatto un foglio HTML?
 
 ## 82. Un metodo per collegarsi al DB senza entity framework? Quale libreria si usa?
+
+## 83. Che cosa sono i Services e cosa fanno?
+
+
 ---
 
 ## stringa di comando per fare push
