@@ -334,6 +334,8 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 
 ## 83. Che cosa sono i Services e cosa fanno?
 
+## 84. Che cos'è il costruttore?
+
 
 ---
 
