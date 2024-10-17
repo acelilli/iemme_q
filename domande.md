@@ -335,6 +335,13 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 ## 83. Che cosa sono i Services e cosa fanno?
 
 ## 84. Che cos'è il costruttore?
+// da integrare // I costruttori sono implicitamnte pubblici, per inibirli possiamo renderlo privato, ma se stiamo scrivendo una superclasse, basterà definire la classe come astratta. 
+
+## 85. Che cos'è MVC? E perchè dovrei usarlo?
+Pattern di programmazione, "Model View Controller" // da integrare //. Si utilizza poichè è facilmente scalabile e mantenibile.
+
+## 86. Che cos'è MVVM?
+Model View ViewModel, è la struttura utilizzata da Angular: potenzia all'estremo l'MVC. // da integrare //
 
 
 ---
