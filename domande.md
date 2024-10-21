@@ -106,8 +106,10 @@ Cioè è una funzionalità di .NET che consente di eseguire query su diverse fon
 È un design pattern di programmazione che garantisce la creazione di una singola istanza, fornendo un accesso globale a essa.
 
 All'interno del DAO (Data Access Project)  che fa parte del DAL
+
 `private static PersonaDao instance;`
-...
+
+``
 
 ## 20. Cos’è una Stored Procedure?
 Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML , QL.
@@ -119,7 +121,7 @@ Lo using alloca variabili all'interno del suo contesto dette disposable, cioè a
 Il BCL (Base Class Library) è una parte fondamentale del framework .NET che offre un'ampia gamma di classi e metodi per supportare lo sviluppo di applicazioni, consentendo agli sviluppatori di risparmiare tempo e sforzo grazie alla disponibilità di funzionalità già pronte e testate.
 
 ## 23. Cosa sono le proprerties? 
-Sono un costrutto utile per gestire l’accesso e la modifica degli attributi di un oggetto in modo controllato, facilitando l’incapsulamento. Questi forniscono i metodi get e set per accedere e modificare i valori dei campi privati.
+Sono un costrutto utile per gestire l’accesso e la modifica degli attributi di un oggetto in modo controllato, facilitando l’incapsulamento. Questi forniscono i metodi get e set per accedere e modificare i valori dei campi dei relativi attributi.
 
 ## 24. Qual è la differenza tra un classe e un oggetto?
 la classe è come un progetto o un modello che stabilisce come dovrebbe essere un oggetto, mentre l'oggetto è l'effettiva realizzazione di quel modello, con caratteristiche e dati specifici. Un oggetto può essere una variabile che basa la sua esistenza su una classe.
@@ -157,11 +159,11 @@ Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella
 ## 32. Che cos'è .typeOf()? E come l'abbiamo utilizzato? 
 
 ## 33. Funzione di HASH e MD5:
-Un hash è un valore numerico generato da una funzione di Hashing. Gli hash sono utilizzati per confrontare per confrontare oggetti e per ottimizzare la ricerca in strutture di dati. In pratica è una stringa rappresentativa di un valore.
+Un **hash** è un valore numerico generato da una funzione di Hashing. Gli hash sono utilizzati per confrontare per confrontare oggetti e per ottimizzare la ricerca in strutture di dati. In pratica è una stringa rappresentativa di un valore.
 
 MD5 è un algoritmo di cifratura non invertente al quale posso dare un testo e mi restituirà un codice (HASH) di 32 caratteri. Non è invertente nel senso che restituisce solo un certo numero di caratteri. Gli algortmi di hashting sono pubblici e vengono detti **riepologativi**. Vengono anche detti **generatori di impronta**.
 
-L'**impronta** è una funzione che mi ritorna un valore, viene detta di **digest**: se gli diamo dei valori diversi mi restituirà dei valori diversi, se gli do dei valoro uguali mi restituirà gli stessi valori.
+L'**impronta** è una funzione che mi ritorna un valore, viene detta di **digest**: se gli diamo dei valori diversi mi restituirà dei valori diversi, se gli do dei valore uguali mi restituirà gli stessi valori.
 
 ## 34. Che cos'è una Hash Table? E che cos'è il Dictionary?
 `Hashtable` è una collezione di elementi combinati in coppie chiave-valore, la cui chiave deve necessariamente essere di un tipo primitivo mentre i valori possono avere qualsiasi tipo. Questo fa si che sia un contenitore **non omogeneo** e si può accedere ai valori **solo** tramite la chiave, che è sempre il primo valore. L'hastable è un contenitore **sequenziale** quindi l'ordinamento non è possibile e non essendo omogeneo, o comunque visto che i suoi elementi non possono esere accumunati tra loro, non si può utilizzare LINQ in questo contesto Si usa una hashtable quando non ha importanza l'rdinamento degli elementi. Tuttavia è importante notare che troppa libertà sulla tipologia dei dati creerà difficoltà nella standardizzazione e quindi nella gestione dei dati.
@@ -334,7 +336,8 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 
 ## 83. Che cosa sono i Services e cosa fanno?
 
-## 84. Che cos'è il costruttore?
+## 84. Che cos'è il costruttore? E come è fatto in Javascript e in typescript?
+Il cotruttore è il primo metodo che viene richiamato quando istanziamo una classe. 
 // da integrare // I costruttori sono implicitamnte pubblici, per inibirli possiamo renderlo privato, ma se stiamo scrivendo una superclasse, basterà definire la classe come astratta. 
 
 ## 85. Che cos'è MVC? E perchè dovrei usarlo?
@@ -342,6 +345,69 @@ Pattern di programmazione, "Model View Controller" // da integrare //. Si utiliz
 
 ## 86. Che cos'è MVVM?
 Model View ViewModel, è la struttura utilizzata da Angular: potenzia all'estremo l'MVC. // da integrare //
+
+## 87. Che cos'è il navigator/la if navigation(?)? Qual è l'obiettivo?
+
+## 88. Come si chiamano le modalità con cui si portano dietro gli oggetti entity framework?
+Sono modalità di recupero di informazioni dal database.
+- Lazy Loading -> Porta direttamente l'oggetto
+- Eager Loading -> Porta dietro un oggetto e anche i riferimenti.
+
+## 89. Che cos'è una migrazione?
+Nell'approccio code first possiamo creare e modificare delle tabelle (quindi faremo del DDL), che quindi non abbiamo nella fase iniziale, tramite il codice in C#. Creiamo le classi nel nostro codice, quindi creiamo la migrazione. Inoltre possiamo apportare delle modifiche al database per modificare le tabelle. Lo stato attuale della migrazione del database è lo storico di tutte le sue migrazioni.
+
+## 90. Che cos'è l'Ereditarietà?
+Principio della programmazione ad oggetti // da implementare //
+
+## 91. Cosa intendiamo per Astrazione?
+
+## 92. Che cos'è un metodo astratto?
+
+## 93. Che cos'è l'interfaccia in typescript?
+
+## 94. Il Javascript è un linguaggio di programmazione orientato ad oggetti?
+
+## 95. Cos'è il ToString() e cosa sono .Equals e GetHashCode(?) che fanno arte della la casse Object?
+- ToString() restituisce sottoforma di string il tipo dell'oggetto.
+- Equals() verifica che qualsiasi tipo di oggetto e i suoi valori siano uguali a quelli dell'oggetto passato nella funzione, restituice un bool. `base.Equals(obj)` quindi compara il **contenuto**
+- GetHasCode() restitusce un valore numerico che identifica un certo oggetto. Non verifica il contenuto della variabile, serve proprio per identificare due oggetti siano effettivamente due oggetti diversi.
+
+## 96. Come funziona il pattern MVC?
+
+## 97. Invece con Angular? (MVVM)
+
+## 98. Cos'è il two way binding?
+
+## 99. Due variabili possono puntare alla stssa locazione di memoria?
+Sì. Se per esempio creiamo una variabile alla quale assegnamo come valore un'altra variabile, entrambe punteranno alla stessa locazione in memoria. Es:
+
+`int x = 5;`
+
+`int y = x`
+
+Visto che entrambi puntano alla stessa cella di memoria, modificando uno verrà modificata anche l'altra. C# le variabili quindi puntano ad un indirizzo in memoria, mentre, ad esempio se scrivessimo la stessa cosa su **JavaScript**, la variabile x e la variabile y sarebbero totalmente separate tra di loro creando una nuova cella di memoria per ciascuna.
+
+## 100. Cosa sono AddTransient(), AddSingleton() e AddScoped()?
+Nell'ambito di una applicazione API WEB
+//contesto// cosa fanno//
+
+## 101. Che cos'è una architettura Client/Server? Come funzionano l'Http Request e l'Http response? 
+Una complient architecture basata su due attori: Client e Server. La comunicazione avviene tramite protocolli HTTP, in cui il CLIENT tramite la HTTP REQUEST manda una richiesta, detta HEADER (che contiene mittente, destinatario e payload).
+// Post
+Quando il server ha effettuato qualsiasi tipo di operazione richiesta, manterà la sua HTTP RESPONSE in cui mette nell'HEADER mittende, destinatario e lo stato della richiesta mentre nel payload il risultato dell'operazione.
+
+## 102. Che cos'è POSTMAN?
+
+## 103. Che cos'è una REST API? 
+In una architettura CLIENT SERVER, una REST API è una metodologia di comunicazione che comunica in HTTP, che invia il body in formato JSON.
+
+## 104. Che cos'è Angular?
+Framework di sviluppo di web app single page che gira sul client. La sua peculiarità è 
+
+## 105. Che cos'è il DOM Dinamico?
+Cioè, l'HTML di base è stateless, quinsi, per renderlo dinamico sisogna renderlo stateful e questo avviene non aggiornando mai la pagina: se la pagina non si aggiorna non perde il suo stato e conserverà i dati, passando da stateless a stateful. Con Angular, essendo una single page application i nodi verranno generati in maniera dinamica.
+
+## 106. Cos'è un try-catch? Come funziona? Che succede se innesto un try catch dentro un altro?
 
 
 ---
