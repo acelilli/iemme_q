@@ -386,7 +386,12 @@ C'è una situazione di ereditarietà quando, a patire da una superclasse, abbiam
 Una caratteristica della mia classe che valorizzamo attraverso le properties.
 
 ## 77. Come si fa un ciclo infinito?
-
+Il ciclo continuerà a eseguire il blocco di codice al suo interno fino a quando non si interrompe manualmente l'esecuzione
+` while (true)
+        {
+            Console.WriteLine("Questo è un ciclo infinito.");
+            Thread.Sleep(1000); // Pausa di 1 secondo
+        }`
 
 ## 78. Come funzione la SQL Injection?
 Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di accedere a dei dati ai quali non si dovrebbe accedere.
@@ -395,6 +400,15 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 // sopra
 
 ## 80. Che cos'è una transaction? E come è fatta?
+Nel contesto del database, la transaction è una funzionalità che ci permette di aggrupare diversi comandi di esecuzione in un blocco solo. Se tutto va bene questo blocco verrà eseguito nella sua totalità altrimenti il sistema si bloccera e non verrà eseguito il comando. Esempio:
+`BEGIN TRANSACTION;
+INSERT INTO Utente (nome, cognome) 
+VALUES ('Mario', 'Rossi');
+INSERT INTO Libro (titolo, autore) 
+VALUES ('Il Grande Libro', 'Giovanni Verdi');
+COMMIT;
+`
+Per gestire gli errore utilizziamo la ROLLBACK all'interno di un try catch. (così il nostro programma non va in blocco e si ritorna allo stato precedente).
 
 ## 81. Com'è fatto un foglio HTML?
 E' composto da due sezioni principali: Head, che è la parte che non viene visualizzata dall'utente e contiene delle informazioni tecniche relative all'utente. Descrivono al browser come codeficare i caratteri, o descrivere la scala del sito. L'unico tagg all'interno di head visualizzato dall'utnte è il title, nella barra del browser. Nel body è racchiuso il contenuto vero e proprio della pagina, visibile dagli utenti. Possiamo suddividere a sua volta il body in header, main e footer.
@@ -431,12 +445,14 @@ Nell'approccio code first possiamo creare e modificare delle tabelle (quindi far
 Principio della programmazione ad oggetti // da implementare //
 
 ## 91. Cosa intendiamo per Astrazione?
-
+L'astrazione consente di modellare entità del mondo reale o concetti complessi attraverso interfacce o classi astratte , consiste nel ridurre la complessità mostrando solo gli aspetti esesnsiali di un oggetto nascondendo i dettagli implementatitvi. 
 ## 92. Che cos'è un metodo astratto?
-
+E' un metodo che viene dichiarato ma non ha corpo (non ha un'implementazione nella classe astratta), deve essere implementato da tutti le casi derivare concrete, può essere dichiarato soltanto da una calse astratta. 
 ## 93. Che cos'è l'interfaccia in typescript?
+Un'interfaccia in TypeScript serve a definire un contratto per gli oggetti o le classi, specificando quali proprietà e metodi devono essere presenti.
 
 ## 94. Il Javascript è un linguaggio di programmazione orientato ad oggetti?
+Si ma non del tutto, essa implementa il concett di OOP in modo diverso, usa principalmente l'uso di prototipi per l'eridarietà, sinstassi delle classi, incapsulamento con le (closure) visto che non abbiamo i metodi get e set, polimorfismo attraverso l'ereditarietà e la possibilità di sovrascrivere metodi in classi derivare.
 
 ## 95. Cos'è il ToString() e cosa sono .Equals e GetHashCode(?) che fanno arte della la casse Object?
 - ToString() restituisce sottoforma di string il tipo dell'oggetto.
@@ -470,8 +486,10 @@ Sì. Se per esempio creiamo una variabile alla quale assegnamo come valore un'al
 Visto che entrambi puntano alla stessa cella di memoria, modificando uno verrà modificata anche l'altra. C# le variabili quindi puntano ad un indirizzo in memoria, mentre, ad esempio se scrivessimo la stessa cosa su **JavaScript**, la variabile x e la variabile y sarebbero totalmente separate tra di loro creando una nuova cella di memoria per ciascuna.
 
 ## 100. Cosa sono AddTransient(), AddSingleton() e AddScoped()?
-Nell'ambito di una applicazione API WEB
-//contesto// cosa fanno//
+Nell'ambito di una applicazione API WEB nel nostro progran.cs implementiamo questi metodi per registrare i servizi. Essi definiscono il ciclo di vita dei servizzi all'interno dell'applicazione especificando quando le istanze di un servizio vengono create e gestite. 
+AddTransient()--> ASP.NET crea una nuova istanza del servizio ogni qual volta viene richiesto.
+AddScope()--> ASP.NET crea una nuova istanza del servizio per ogni richiesta HTTP. 
+AddSingleton() ASP.NeT crea una solo istanza del servizion che viene condivisa in tutta l'applicazione. 
 
 ## 101. Che cos'è una architettura Client/Server? Come funzionano l'Http Request e l'Http response? 
 Una complient architecture basata su due attori: Client e Server. La comunicazione avviene tramite protocolli HTTP, in cui il CLIENT tramite la HTTP REQUEST manda una richiesta, detta HEADER (che contiene mittente, destinatario e payload).
@@ -496,16 +514,25 @@ Framework di sviluppo di web app single page che gira sul client. Tra le sue pec
 Cioè, l'HTML di base è stateless, quinsi, per renderlo dinamico sisogna renderlo stateful e questo avviene non aggiornando mai la pagina: se la pagina non si aggiorna non perde il suo stato e conserverà i dati, passando da stateless a stateful. Con Angular, essendo una single page application i nodi verranno generati in maniera dinamica.
 
 ## 106. Cos'è un try-catch? Come funziona? Che succede se innesto un try catch dentro un altro?
+E' una struttura di controllo per gestire le eccezzioni, questi possono verificarsi durante l'esecuzione di un programma e mi permette che non si blocchi il flusso dell'esecuzione dell'applicazione. Il try catch anidato (try catch su try catch) se si verifica un'ecceszione nel blocco interno, viene rilasciata al blocco ester no catch che lo catturerà per poi gestirla ulteriormente. 
 
 ## 107. Che cos'è l'Http Context?
 Contesto che permette di accedere all'Http Response e l'Http Request.
 
-## 108. Che significa serialize?
+## 108. Che significa SerializeObject e DeserializeObject ?
+Sono metodi forniti dalla libreria di Newtonsoft_Json(Json.NET), il primo ovvero Serialize permette di salvare l'oggetto in un formato dati Json che può essere facilemte memorizzato e trasmesso, mentre il secondo lo utilizziamo per ricostruire un oggeto appartier da una stringa Json.
 
 ## 109. Che cos'è await async?
+Sono utiizzati per gestire la programmazione asincrona in modo più semplice e legibile. consentono di scrivre codice asincrono che appare e si comporta in modo sincrono. (migliorando la gestione delle promesse).
 
 ## 110. Rest API?
 Stile architetturale per sistemi distribuiti. Rappresenta un sistema di trasmissione di dati su http, i sistemi Rest non prevedono il concetto di sessione, ovvero sono stateless. 
+
+## 111. Cos'è la fetch?
+Fetch è un'API JavaScript moderna utilizzata per effettuare richieste di rete (HTTP) e recuperare risorse, come dati da un server. Effettua richieste asimcrone. Le fetch restituiscono un promise che risolve la risposta della richiesta, supporta i vari metodi del HTTP (GET, POST,PUT,DELETE), gestisce ancje diversi formati di dati. 
+
+## 112 ViewBag cos'è?
+ViewBag è un oggetto dinamico fornito dal framework ASP.NET MVC (e ASP.NET Core) che consente di passare dati dalla controller alla view senza dover definire un modello fortemente tipizzato. È utile per inviare dati temporanei o informazioni che non giustificano la creazione di un modello completo.
 
 ---
 
