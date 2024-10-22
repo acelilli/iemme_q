@@ -32,6 +32,7 @@ In C#, **static** è definito come attributo di classe, è una parola chiave che
 
 ## 10. Come funziona l'avvio del pogramma (static)?
 (sempre nell'ambito dello static)
+Il programma inizia dal metodo **static Main** che è l'entry point del programma. Gli altri metodo definiti come **static** saranno disponibili in qualsiasi punto del programma perchè già allocati al suo avvio. 
 
 ## 11. Concetto di information hiding e incapsulamento
 Nell'ambito della programmazione ad oggetti, con il concetto di incapsulamento intendiamo dire che tutto ciò che appartiene ad una classe viene descritto al suo interno. 
@@ -110,7 +111,14 @@ All'interno del DAO (Data Access Project)  che fa parte del DAL
 
 `private static PersonaDao instance;`
 
-``
+`public static PersonaDao GetInstance()`
+`{
+ if(instance == null)
+   instance = new PersonaDao()
+  return instance;
+}`
+
+`private PersonaDao() {}`
 
 ## 20. Cos’è una Stored Procedure?
 Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML, QL. In pratica creiamo un sottoprogramma all'interno del nostro DBMS che ci permette di fare delle operazioni, anche parametriche, richiamandolo col il suo nome.
@@ -198,6 +206,7 @@ L'**impronta** è una funzione che mi ritorna un valore, viene detta di **digest
 Perchè utilizzare `ICollection`? Per il principio **D** del **SOLID**: le classi dovrebbero dipendere da astrazioni e non da classi concrete Cioè, si dovrebbe sempre poter accedere ai metoi implementati da `ICollection`.
 
 ## 36. Cos'è il CDN?
+**Contact Delivery Network** compututer o server super ottimizzato, dedicato solo al delivery di un certo file, quindi che lo forniscono in maniera più ottimizzata.
 
 ## 37. Che cos'è una Constraint? Un esempio?
 
@@ -246,7 +255,7 @@ All'interno di un progetto fa sì che altre soluzioni non possono accedere alle 
 è una parola chiave che utilizziamo per far sì che si possa avere accesso ad un dato in sola lettura. Cioè, questo dato non sarà in alcun modo modificabile.
 
 ## 51. Che cos'è il DAO?
-Il C# il **Dao** (Data Access Object) è un pattern di programmazione che rappresenta il legame tra il codice sorgente ed il database. // da integrare
+Il C# il **Dao** (Data Access Object) è un pattern di programmazione che rappresenta il legame tra il codice sorgente ed il database. Diversi DAO sono contenuti in una cartella DAL (Data Acces Layer). Il DAO rappresenta quindi un'interfaccia (detta **IDao**) che implementiamo dei DAO nei nostri componenti per definirne i metodi.
 
 ## 52. Esempi di relazioni one to one, one to many e many to many?
 
@@ -264,17 +273,21 @@ Rappresenta una relazione di collaborazione dove gli oggetti e il loro contenito
 `public List<Archivio> {get; set;} = new List<Archivio>()`
 
 ## 57. Che cos'è l'UML?
-**Unified Modeling Language**.
+**Unified Modeling Language** rappresenta la struttura progettuale di un programma, nell'ambito della OOP. Attraverso l'UML possiamo creare diagrammi di classi, oggetti e componenti.  Attraverso i diagrammi che scriviamo con l'UML possiamo tracciare metodi, attributi e relazioni tra le classi.
+
+Invece per tracciare le tabelle di un Database si utilizza il ERD (Diagramma entità relazionale).
 
 ## 58. Che succederebbe se, in una situazione ereditaria, scrivessi un costritture parametrico nella superclasse?
 In una situazione ereditaria, scrivendo un costruttore parametrico sovrascrivo il costruttore di default! Quindi è bsempre bene dichiarare il costruttore senza parametri, quello di default, nella superclasse per non sovrascriverlo!
 
 ## 59. Che cos'è GIT?
+È un sistema di controllo di versionamento (VCS - Version Control System): cioè permette di tracciare le modifiche ai file di un progetto e coordinare il lavoro tra più sviluppatori.  **GitHub** è una repository remota.
 
 ## 60. Che cos'è la staging area?
+La staging area, ossia l'area di sviluppo, nel contesto di GIT rappresenta un'area intermedia nella quale vengono preparati i file prima di essere committati.
 
 ## 61. Che cos'è la commit?
-Prende ciò che c'è nella stagin area, gli da un codice identificativo, e salva una copia degli elementi al suo interno.
+Prende ciò che c'è nella staging area, gli da un codice identificativo, e salva una copia degli elementi al suo interno.
 
 ## 62. Che cos'è la modalità Fast Forward?
 Modalità che permette di fare il commit da un branch al main quando non ci sono conflitti e altri commit precedenti.
@@ -335,7 +348,8 @@ Nel contesto dei database applichiamo i principi ACID quando implementiamo le tr
 ## 71. Vincoli interni e vincoli esterni:
 Vincoli esterni, nel contesto del database, sono ad esempio quando dichiariamo il tipo di dato (VARCHAR, INT ecc.) o anche UNIQUE, NOT NULL...mentre i vincoli esterni per esempio sono le Foreign Key.
 
-## 72. Cosa sono i tipo primitivi e quali sono?
+## 72. Cosa sono i tipi primitivi e quali sono?
+Sono tipi che non posso essere nè mmodificati nè scomposti,
 
 ## 73. In C# cos'è una var? Posso fare una lista di var?
 
@@ -357,14 +371,17 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 ## 80. Che cos'è una transaction? E come è fatta?
 
 ## 81. Com'è fatto un foglio HTML?
+E' composto da due sezioni principali: Head, che è la parte che non viene visualizzata dall'utente e contiene delle informazioni tecniche relative all'utente. Descrivono al browser come codeficare i caratteri, o descrivere la scala del sito. L'unico tagg all'interno di head visualizzato dall'utnte è il title, nella barra del browser. Nel body è racchiuso il contenuto vero e proprio della pagina, visibile dagli utenti. Possiamo suddividere a sua volta il body in header, main e footer.
 
 ## 82. Un metodo per collegarsi al DB senza entity framework? Quale libreria si usa?
 
 ## 83. Che cosa sono i Services e cosa fanno?
 
 ## 84. Che cos'è il costruttore? E come è fatto in Javascript e in typescript?
-Il cotruttore è il primo metodo che viene richiamato quando istanziamo una classe. 
-// da integrare // I costruttori sono implicitamnte pubblici, per inibirli possiamo renderlo privato, ma se stiamo scrivendo una superclasse, basterà definire la classe come astratta. 
+Il cotruttore è il primo metodo che viene richiamato quando istanziamo una classe.  I costruttori sono implicitamente pubblici, per inibirli possiamo renderlo privato, ma se stiamo scrivendo una superclasse, basterà definire la classe come astratta. 
+Possiamo fare overload del costruttore dandogli dei parametri. Tuttavia facendolo in una superclasse inibiremmo anche il costruttore delle classi figlie, quindi è una pratica sconsigliata.
+- In C# richiamiamo il constructor semplicemente utilizzando il `new`
+- In **JavaScript** e in **Typescript** viene richiamato il constructor con il metodo speciale `constructor()`, inoltre in **TS** possiamo tipizzarne i parametri.
 
 ## 85. Che cos'è MVC? E perchè dovrei usarlo?
 Pattern di programmazione, "Model View Controller" // da integrare //. Si utilizza poichè è facilmente scalabile e mantenibile.
@@ -440,13 +457,27 @@ Programma che utilizziamo per comunicare con il database attraverso le API. Attr
 In una architettura CLIENT SERVER, una REST API è una metodologia di comunicazione che comunica in HTTP, che invia il body in formato JSON.
 
 ## 104. Che cos'è Angular?
-Framework di sviluppo di web app single page che gira sul client. La sua peculiarità è 
+Framework di sviluppo di web app single page che gira sul client. Tra le sue peculiarità:
+- La sua **struttura in componenti**, indipendenti tra loro e riutilizzabili;
+- La sua sincronizzazione tra modello di dati e l'interfaccia utente **data binding bidirezionale**;
+- Un sistema di **dipendency injection** cioè quel design pattern architetturale che permette di iniettare dei riferimenti ad altre dipendenze in modo tale da facilitare la comunicazione tra queste (es. per utilizzarne metodi o attributi). Cioè non creiamo una nuova istanza di una classe ma una sua "iniezione".
+- **Routing** cioè gestisce la navigazione tra diverse viste dell'app: cioè non viene cambiata la pagina nè viene ricaricata la app, semplicemente avviene un cambiamento di componenti all'interno della mia app.
+- Linguaggio **Typescript** cioè superset di Javascript, tipizzato implementato dalla seconda versione di Angular.
 
 ## 105. Che cos'è il DOM Dinamico?
 Cioè, l'HTML di base è stateless, quinsi, per renderlo dinamico sisogna renderlo stateful e questo avviene non aggiornando mai la pagina: se la pagina non si aggiorna non perde il suo stato e conserverà i dati, passando da stateless a stateful. Con Angular, essendo una single page application i nodi verranno generati in maniera dinamica.
 
 ## 106. Cos'è un try-catch? Come funziona? Che succede se innesto un try catch dentro un altro?
 
+## 107. Che cos'è l'Http Context?
+Contesto che permette di accedere all'Http Response e l'Http Request.
+
+## 108. Che significa serialize?
+
+## 109. Che cos'è await async?
+
+## 110. Rest API?
+Stile architetturale per sistemi distribuiti. Rappresenta un sistema di trasmissione di dati su http, i sistemi Rest non prevedono il concetto di sessione, ovvero sono stateless. 
 
 ---
 
