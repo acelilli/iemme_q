@@ -12,6 +12,7 @@ Object è la **superclasse** dalla quale derivano tutte le entità.
 È il modo con cui un metodo può essere richiamato. Due metodi non possono avere la stessa firma sebbene possano chiamarsi allo stesso modo. Le firme devono essere necessariamente diverse (cioè avere parametri diversi). Quando esistono dei metodi che hanno lo stesso nome ma firme diverse si dice che si sta facendo un OVERLOAD di parametri.
 
 ## 4. Che cos'è l'Overload?
+Si fa l'overload quando scriviamo due metodi con nome uguale ma firme, cioè parametri, diversi. (polimorfismo statico)
 
 ## 5. Che cos'è una lista?
 Una lista risolve il problema degli array statici: è una raccolta di dati che possono anche non essere dello stesso tipo, la lunghezza della lista è variabile, ogni elemento al suo intero potrà quindi occupare spazi non sequenziali in memoria. 
@@ -26,6 +27,7 @@ L'elemento interfaccia è un costrutto che contiene esclusivamente dei metodi se
 Un'interfaccia viene **implementata**.
 
 ## 8. Che cos'è il tipo generico e a cosa serve?
+`<T>` rappresenta il dato generico di una classe. Ad esempio, quando dobbiamo implementare un'interfaccia associandole `<T>`, (es.: `IInterfaccia<T>`) diciamo che nel diamond potrà andare qualsiasi tipo di dato, e quando implementata sarà: `public class Persona : IInterfaccia<Persona>`
 
 ## 9. Che cos'è static?
 In C#, **static** è definito come attributo di classe, è una parola chiave che indica una proprietà o attributo allocato immediatamente all'inizio del programma: non avrà quindi bisogno dell'istanza di una classe per essere richiamato, mettendo a disposizione l'attributo o il metodo in qualsiasi punto del punto del programma. Un esempio di metodo static è il *main* che rappresenta l'inizio del programma.
@@ -127,7 +129,7 @@ Una stored procedure è un innesto di linguaggio di programmazione che ci permet
 Lo using alloca variabili all'interno del suo contesto dette disposable, cioè alla sua conclusione grazie al garabage collector vengono eliminate dalla memoria. 
 
 ## 22. Cos’è il BCL?
-Il BCL (Base Class Library) è una parte fondamentale del framework .NET che offre un'ampia gamma di classi e metodi per supportare lo sviluppo di applicazioni, consentendo agli sviluppatori di risparmiare tempo e sforzo grazie alla disponibilità di funzionalità già pronte e testate.
+Il **BCL** (Base Class Library) è una parte fondamentale del framework .NET che offre un'ampia gamma di classi e metodi per supportare lo sviluppo di applicazioni, consentendo agli sviluppatori di risparmiare tempo e sforzo grazie alla disponibilità di funzionalità già pronte e testate.
 
 ## 23. Cosa sono le proprerties? 
 Sono un costrutto utile per gestire l’accesso e la modifica degli attributi di un oggetto in modo controllato, facilitando l’incapsulamento. Questi forniscono i metodi get e set per accedere e modificare i valori dei campi dei relativi attributi.
@@ -169,7 +171,10 @@ Questo avviene quando installo Entity Framework nel mio programma: si può fare 
 ## 31. Perché, all'interno di una classein C# che contiene delle foreign key, l'attributo public virtual MiaClasseRifNavigation? è nullable?
 `public virtual MiaClasseRifNavigation? {get; set}` 
 
-## 32. Che cos'è .typeOf()? E come l'abbiamo utilizzato? 
+## 32. Che cos'è typeOf()? E come l'abbiamo utilizzato? 
+**typeOf()** è un metodo che abbiamo utilizzato per comparare se il tipo di un oggetto è uguale ad una classe. Cioè:
+
+`if(stu.GetType() == typeOf(Persona))` =>  in questo esempio controlliamo se il tipo di stu è uguale al tipo della classe Persona.
 
 ## 33. Funzione di HASH e MD5:
 Un **hash** è un valore numerico generato da una funzione di Hashing. Gli hash sono utilizzati per confrontare per confrontare oggetti e per ottimizzare la ricerca in strutture di dati. In pratica è una stringa rappresentativa di un valore.
@@ -209,6 +214,9 @@ Perchè utilizzare `ICollection`? Per il principio **D** del **SOLID**: le class
 **Contact Delivery Network** compututer o server super ottimizzato, dedicato solo al delivery di un certo file, quindi che lo forniscono in maniera più ottimizzata.
 
 ## 37. Che cos'è una Constraint? Un esempio?
+Nel contesto dei database una costraint è un **vincolo** che si applica ad una colonna o ad un gruppo di colonne di una tabella per grantire l'integrità e la correttezza dei dati. Ne esistono di vari tipi, tra cui: primary key, foreign key, unique e check. Possiamo scrivere una constraint così:
+
+`ADD CONSTRAINT Chk_eta CHECK (eta > 18)` 
 
 ## 38. Che cos'è un indice nel contesto della una primary key?
 Quando viene creata la struttura dei record in memoria, insieme ad essa viene creato un indice associato ai singoli record. Grazie alla primary key possiamo scorrere molto più rapidamente la memoria e trovare i record associati, che è quindi un campo identificativo univoco che ci permette di operare in maniera **atomica**, cioè su una singola riga.
@@ -216,11 +224,12 @@ Quando viene creata la struttura dei record in memoria, insieme ad essa viene cr
 L'indice è una struttura che ci permette una rapida scansione dei record di una tabella. Può essere necessario su una tabella con numerosissimi record, per interrogazioni frequenti.
 
 ## 39. Che cos'è una Unique ed una chiave eletta?
+Garantisce che i valori in una data colonna siano unici ovvero che non siano duplicati all'interno di quella colonna. Una unique diventa una chiave elentta quando non viene definita la primary key. La chiave primaria eletta deve soddisfare i criteri di unicità e non nullità, se li soddisfa potrà essere appropriata per identificare univocamente ogni record della tabella.
 
 ## 40. Che vuol dire DOM e che cos'è?
 Il *Document Object Model* è la rappresentazione sottoforma di albero della struttura del documento HTML. È formato dai tag che rappresentano i nodi dell'albero e possiamo accedere ai nodi tramite JavaScript utilizzando, ad esempio, `document.getElementByID()` per esempio.
 
-## 41. Che signiica che l'HTML è stateless? 
+## 41. Che significa che l'HTML è stateless? 
 Vuol dire che è senza stato. Se modifichiamo o inseriamo dei dati nell'HTML, i dati non vengono conservati: questo perché non vengono conservati nello *stato*.
 
 ## 42. Che cos'è il CSS?
@@ -235,8 +244,16 @@ Un'interfaccia è composta unicamente da metodi vuoti. Una classe astratta invce
 Tecnicamente è un array statico di Object (cioè l'array può essere considerato come una tabella di Object), dei quali gli oggetti nell'array corrisponderanno ai record della tabella.
 
 ## 45. Che cos'è un'arrow function?
+Funzione che non ha bsogno della keyword function, può venire associata ad una variabile (preferibilmente una const), che permette di scrivere una funzione in maniera molto più sintetica.
+
+`const miaFunzione = (param) => param * 2` 
+
+In presenza di un solo parametro, le parentesi tonde possono anche non venire scritte.
 
 ## 46. Perchè utilizziamo var e perchè usiamo let? Che cos'è const?
+- `var` definisce una variabile di qualsiasi tipo, sovrascrivibile e richiamabile in qualsiasi punto (quindi pericolosa).
+- `let` accessibile solo in un dato ambito o scope, non può essere ridichiarata ma uò essere aggiornata. Preferita a var.
+- `const` una volta dichiarato il suo valore non può cambiare. 
 
 ## 47. Che cos'è una View? E si possono fare delle proiezioni al suo interno?
 Nel contesto dei database, la View è una struttura, dichiarata in DDL, che può contenere Query language,  potrà quindi solamente leggere i dati. Possiamo dire che è temporanea poichè viene creata solamente per leggere. 
@@ -258,10 +275,14 @@ All'interno di un progetto fa sì che altre soluzioni non possono accedere alle 
 Il C# il **Dao** (Data Access Object) è un pattern di programmazione che rappresenta il legame tra il codice sorgente ed il database. Diversi DAO sono contenuti in una cartella DAL (Data Acces Layer). Il DAO rappresenta quindi un'interfaccia (detta **IDao**) che implementiamo dei DAO nei nostri componenti per definirne i metodi.
 
 ## 52. Esempi di relazioni one to one, one to many e many to many?
+- One to One: una persona ha solo una carta di identità (o codice fiscale...)
+- One to Many: una persona ha tante carte fedeltà.
+- Many to Many: tanti pacchetti viaggi contengono tante destinazioni.
 
 ## 53. Possiamo definire C# come fortemente o debolmente tipizzato?
+Possiamo definire C# come un linguaggio fortemente tipizzato.
 
-## 54. Che cosa signifia override?
+## 54. Che cosa significa override?
 È l'operazione che ci permette di ridefinire un attriuto o un metodo di una classe genitore. Nella classe genitore deve avere la parola chiave **abstract** che indica che quel metodo deve essere necessariamente implementato nelle sottoclassi.
 
 ## 55. Che cos'è la composizione e come viene utilizzata?
@@ -310,15 +331,16 @@ Rappresentano tutti e tre dei valori **falsy* cioè possono rappresentare tutti 
 `0 == false` => true perchè 0 è falsy ma `0 === false` => false perché non c'è corrispondenza di tipo
 
 ## 66. Paradigma client-server:
-Design pattern architetturale.
-*Client*: qualsiasi strumento in grado di fare delle richieste http. Una architettura http deve stare a delle regole: il client utilizza il protocollo http per fare una richiesta. Una richiesta http è una richiesta di dati o servzi. Es. una API: cioè una tipologia di elemento che ci restituisce qualcosa alla richiesta.
+Architettura di rete nella quale i client (computer, browser...) si connette ad un server (computer contenenti file fisici che costituiscon es. siti web) per usufruire di un servizio. Da un client connesso ad internet è possibile inviare una richiesta ad un server (**Http Request**) e dal server è possibile ricevere la risposta alla richiesta (**Http Response**)
 
-*Server*: è qualcosa a cui chiediamo i servizi.
+- *Client*: qualsiasi strumento in grado di fare delle richieste http.
+- Una architettura http deve stare a delle regole, cioè i **protocolli**. Il client utilizza il protocollo http per fare una richiesta. Una richiesta http è una richiesta di dati o servzi. Es. una API: cioè una tipologia di elemento che ci restituisce qualcosa alla richiesta.
+- *Server*: è il computer al quale chiediamo i servizi e ci fornisce quindi una Http Response.
 
 Richiesta HTTP: Hyper Text Transfer Protocol. Una richiesta HTTP è stateless: non conserva i dati della precedente richiesta. Per funzionare, al paradigma HTTP deve essere associata una *response*.
 
 HTTP request e HTTP Response:
-- **Http request** può essere effettuata in due modi: get e post. hanno specificato il mittente, il destinatario e un payload (il contenuto). Con il mio browser posso fare esclusivamente richieste *get*, per creare delle richieste di post ho bisogno di un simulatore.
+- **Http request** può essere effettuata in due modi: get e post. Al suo in terno sono specificati il mittente, il destinatario e un payload (il contenuto). Con il mio browser posso fare esclusivamente richieste *get*, per creare delle richieste di post ho bisogno di un simulatore.
 - **Http response** contiene il mittente, il destinatario, uno status code e un payload opzionale.
 
 ## 67. Status code:
@@ -352,6 +374,7 @@ Vincoli esterni, nel contesto del database, sono ad esempio quando dichiariamo i
 Sono tipi che non posso essere nè mmodificati nè scomposti,
 
 ## 73. In C# cos'è una var? Posso fare una lista di var?
+In C# una variabile dichiarata come `var` è una variabile del quae il tipo viene determinato al momento della compilazione ma che **non può cambiare**. Cioè anche se cambiamo il valore di quella variabile, se viene istanziata come string allora dovrà essere una string anche la sua modifica.
 
 ## 74. Come funziona l'ereditarietà?
 C'è una situazione di ereditarietà quando, a patire da una superclasse, abbiamo delle sottoclassi che ne ereditano metodi e attributi. Dei metodi ereditati da una superclasse possiamo fare *override* nella sottoclasse quando, nella superclasse, sono definiti come *virtual*.
@@ -360,13 +383,16 @@ C'è una situazione di ereditarietà quando, a patire da una superclasse, abbiam
 È la realizzazione di una classe, cioè un **oggetto** concreto che possiamo utilizzare nel programma.
 
 ## 76. Che cos'è un attributo di classe?
+Una caratteristica della mia classe che valorizzamo attraverso le properties.
 
 ## 77. Come si fa un ciclo infinito?
+
 
 ## 78. Come funzione la SQL Injection?
 Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di accedere a dei dati ai quali non si dovrebbe accedere.
 
 ## 79. Che cos'è una Property?
+// sopra
 
 ## 80. Che cos'è una transaction? E come è fatta?
 
@@ -374,8 +400,10 @@ Tecnica che viene utilizzata per bypassare dei controlli con l'obiettovo di acce
 E' composto da due sezioni principali: Head, che è la parte che non viene visualizzata dall'utente e contiene delle informazioni tecniche relative all'utente. Descrivono al browser come codeficare i caratteri, o descrivere la scala del sito. L'unico tagg all'interno di head visualizzato dall'utnte è il title, nella barra del browser. Nel body è racchiuso il contenuto vero e proprio della pagina, visibile dagli utenti. Possiamo suddividere a sua volta il body in header, main e footer.
 
 ## 82. Un metodo per collegarsi al DB senza entity framework? Quale libreria si usa?
+// DAO
 
 ## 83. Che cosa sono i Services e cosa fanno?
+Rappresentano la logica del progetto in cui si effettua lo scambio dato tra quelli che devono essere accessibile dagli utenti (DTO) e quelli che vengono effettivamente mandati al DB (attraverso i model) i services possono comunicare solo con gli altri services, i DTO e le Repositories.
 
 ## 84. Che cos'è il costruttore? E come è fatto in Javascript e in typescript?
 Il cotruttore è il primo metodo che viene richiamato quando istanziamo una classe.  I costruttori sono implicitamente pubblici, per inibirli possiamo renderlo privato, ma se stiamo scrivendo una superclasse, basterà definire la classe come astratta. 
