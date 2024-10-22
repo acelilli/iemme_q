@@ -63,17 +63,16 @@ Facendo una Left Join in questo caso otteremmo tutte le carte.
 
 
 ## 15. Principi SOLID
-Sono regole che devono sempre eseguite quando si sviluppa un nuovo software.Sono principi di web coding
+Sono regole del coding che devono sempre eseguite quando si sviluppa un nuovo software. 
 
 
-**S** : *Single Responsibility Principle*: il principio di singola responsabilità afferma che ogni classe dovrebbe avere una ed una sola responsabilità, interamente incapsulata al suo interno.
+**S** : *Single Responsibility Principle*: il principio di singola responsabilità afferma che ogni classe dovrebbe avere una ed una sola responsabilità, interamente **incapsulata** al suo interno.
 
 
-**O**: *Open/closed principle*: un'entità software dovrebbe essere aperta alle estensioni, ma chiusa alle modifiche. Ovvero principio di estendibilità, quindi, in un certo senso, contiene anche l'ereditarietà.
+**O**: *Open/closed principle*: un'entità software dovrebbe essere aperta alle estensioni, ma chiusa alle modifiche. Ovvero principio di estendibilità, quindi, in un certo senso, contiene anche l'**ereditarietà**.
 
 
-**L**: *Liskov substitution principle*: secondo il principio di sostituzione di Liskov gli oggetti devono poter essere sostituiti con dei sottotipi senza alterare il comportamento che li caratterizza. 
-(polimorfismo)
+**L**: *Liskov substitution principle*: secondo il principio di sostituzione di Liskov gli oggetti devono poter essere sostituiti con dei sottotipi senza alterare il comportamento che li caratterizza. Cioè facciamo riferimento al **polimorfismo**.
 
 
 **I**: *Interface integration principle*: cioè è preferibile l’implementazione di  più interfacce specifiche che non di una più grande e generica. 
@@ -219,9 +218,12 @@ Vuol dire che è senza stato. Se modifichiamo o inseriamo dei dati nell'HTML, i 
 Nell'ambito dei linguaggi di makup, il *Cascading Style Sheet* rappresenta lo stile del nostro documento che può essere associato al nostro documento HTML. È un insieme di regole che vengono applicate a tutti gli elementi del DOM, vanno quindi a modificare la grafica della nostra applicazione.
 
 ## 43. Qual è la differenza tra classe astratta e interfaccia? 
+Un'interfaccia è composta unicamente da metodi vuoti. Una classe astratta invce contiene attributi e metodi. Quando implementiamo un'interfaccia se ne si implementiamo obbligatoriamente tutti i metodi, che se vogliamo utilizzare dovremo necessariamente farne l'override. Quando estendiamo una classe astratta e ne ereditiamo i metodi possiamo decidere di farne l'override oppure utilizzarli come sono nella classe madre.
 
 ## 44. Che cos'è una tupla?
-È una sequenza di dati eterogenei. Tecnicamente è un array statico di object, che può corrispondere ad un record.
+È una sequenza ordinata di dati eterogenei. Nel contesto del database, una tupla può corrispodere a dun record di una tabella.
+
+Tecnicamente è un array statico di Object (cioè l'array può essere considerato come una tabella di Object), dei quali gli oggetti nell'array corrisponderanno ai record della tabella.
 
 ## 45. Che cos'è un'arrow function?
 
@@ -275,13 +277,24 @@ In una situazione ereditaria, scrivendo un costruttore parametrico sovrascrivo i
 Prende ciò che c'è nella stagin area, gli da un codice identificativo, e salva una copia degli elementi al suo interno.
 
 ## 62. Che cos'è la modalità Fast Forward?
+Modalità che permette di fare il commit da un branch al main quando non ci sono conflitti e altri commit precedenti.
 
 ## 63. Cosa sono i conflitti?
+Nel contesto di Git, possiamo avere dei conflitti quando vengono apportate delle modifiche ad una parte del codice che git non è in grado di unire automaticamente: può accadere se per esempio due sviluppatori stanno lavorando alla stessa parte di codice, può succedere durante l'uso di branch (ramificazioni) o durante le operazioni di push e merge.
 
 ## 64. Che cos'è un CDN?
 *Contact Delivery Network* è un computer o un serve super ottimizzato, dedicato **solo** alla delivery di un certo file, quindi fornendolo nella maniera più ottimizzata.
 
 ## 65. Qual è la differenza tra null e undefined in JavaScript?
+Rappresentano tipologie di valori vuoto, in cui:
+- **Undefined** non ha assegnato alcun valore, cioè è stata dichiarata ma non inizializzata.
+- **Null** esplicitamente asegnato, rappresenta un valore nullo o vuoto, cioè non ha niente al suo interno.
+- **0** non rappresenta assenza di valore, è un numero valido.
+Rappresentano tutti e tre dei valori **falsy* cioè possono rappresentare tutti il valore **false**
+
+`null == undefined` => true, ma se scriviamo `null === undefined` => false perchè non c'è corrispondenza di tipo
+
+`0 == false` => true perchè 0 è falsy ma `0 === false` => false perché non c'è corrispondenza di tipo
 
 ## 66. Paradigma client-server:
 Design pattern architetturale.
@@ -303,6 +316,7 @@ HTTP request e HTTP Response:
 - 500 server errors (es. il server non è stato in grado di gestire una richiesta, ome un imprevisto interno gg)
 
 ## 68. Che cos'è MVC?
+*Guarda 96 per la versione estesa*
 È un pattern di programmazione che suddivide i file per i compiti, Model View Controller.
 - La *View* è l'unica parte in cui l'utente viene a contatto con il programma, es. è la parte in cui ci sarà HTML, CSS, JS.
 - Il *Controller* genera gli oggetti a partire dalle classi all'interno di Models e li salva nel database.
@@ -312,10 +326,11 @@ HTTP request e HTTP Response:
 È il Top Level Domain, cioè è la prima parte di un **endpoint**, che, combinato a dei segment, porterà ad una pagina. Es: facebook.com/home : il TDL è facebook.com, mentre il segment è /home, cioè tutto ciò che in genere si trova tra /.
 
 ## 70. Principi ACID:
-- A => Atomicità: Ogni transazione deve essere totale o nulla, non amette esecuzioni parziali.
-- C => Coerenza: Se c'è un vincolo di integrità, questo non può essere contraddetto. 
-- I => Isolamento: Ogni transazione deve essere eseguita in maniera isolata e indipendente, a blocco e sequenziale, non interferisce con le altre!
-- D = Durabilità: Se c'è un nuovo stato, se la commit va a buon fine, non si può tornare indietro! Diventa quello il suo stato attuale.
+Nel contesto dei database applichiamo i principi ACID quando implementiamo le transaction. Questi principi si applicano sia alle operazioni stesse che, più in generale, al DB stesso, e sono:
+- A => Atomicità: Ogni transazione deve essere totale o nulla, non amette esecuzioni parziali. Si assicura che le operazioni all'interno della **transazione** avvengano come una unità indivisibile.
+- C => Coerenza: Se c'è un vincolo di integrità, questo non può essere contraddetto, cioè mantiene la coerenza dei dati all'interno del **database**.
+- I => Isolamento: Ogni **transazione** deve essere eseguita in maniera isolata e indipendente, a blocco e sequenziale, cioè non interferisce con le altre!
+- D = Durabilità: Se la modifiche vanno a buon fine, non si può tornare indietro, aggiornando in ogni caso lo stato del **database**! 
 
 ## 71. Vincoli interni e vincoli esterni:
 Vincoli esterni, nel contesto del database, sono ad esempio quando dichiariamo il tipo di dato (VARCHAR, INT ecc.) o anche UNIQUE, NOT NULL...mentre i vincoli esterni per esempio sono le Foreign Key.
@@ -328,6 +343,7 @@ Vincoli esterni, nel contesto del database, sono ad esempio quando dichiariamo i
 C'è una situazione di ereditarietà quando, a patire da una superclasse, abbiamo delle sottoclassi che ne ereditano metodi e attributi. Dei metodi ereditati da una superclasse possiamo fare *override* nella sottoclasse quando, nella superclasse, sono definiti come *virtual*.
 
 ## 75. Che cos'è un'istanza?
+È la realizzazione di una classe, cioè un **oggetto** concreto che possiamo utilizzare nel programma.
 
 ## 76. Che cos'è un attributo di classe?
 
@@ -383,6 +399,7 @@ Principio della programmazione ad oggetti // da implementare //
 - GetHasCode() restitusce un valore numerico che identifica un certo oggetto. Non verifica il contenuto della variabile, serve proprio per identificare due oggetti siano effettivamente due oggetti diversi.
 
 ## 96. Come funziona il pattern MVC?
+*Guarda 68 per la versione breve*
 Il pattern di programmazione MODEL VIEW CONTROLLER: nel model definiamo le classi che valoriazziamo attraverso la logica scritta nel controller. Accediamo alla logica attraverso le View, che rappresentano l'unico punto di comunicazione tra l'utente e la logica del programma.
 
 Es.: attraverso un form compiato dall'utente nella view (la parte visualizzata composta da HTML ecc.), inviamo la richiesta al controller che si occupa della gestione dei dati inviati, e li confronta con il model. Poi, a seconda della struttura del progetto può essere il controller ad inviare i dati al database, oppure può essere il model ad occuparsi di questa operazione (attraverso le strutture intermediare di Repo, Services e DTO).7
@@ -392,7 +409,9 @@ View ↔ Controller ↔ Model
 View ↔ Controller ↔ Service(DTOs) ↔ Models(Repositories) ↔ DBMS
 
 ## 97. Invece con Angular? (MVVM)
+Il pattern MVVM (MODEL VIEW VIEWMODEL) rappresenta un potenziamento dell'MVC, ma all'interno del framework Angular.
 
+Utilizza cioè una struttura come quella dell'MVC: il **model** contiene le classi e rappresenta il collegamento tra la business logic e i dati. La **view**, come in MVC è la parte HTML con cui comunica l'utente che visualizza i dati. Il ViewModel è un intermediario tra i model e le view: raccoglie i dati e gestisce gli eventi. Interagisce con la view utilizzando il **data binding** , cioè accedendo ai dati `prod.Nom`.
 
 ## 98. Cos'è il two way binding?
 
