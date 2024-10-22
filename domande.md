@@ -83,13 +83,15 @@ Sono regole che devono sempre eseguite quando si sviluppa un nuovo software.Sono
 
 
 ## 16. Definizione di polimorfismo:
-In una situazione di ereditarietà, per polimorfismo si intende la capacità di un oggetto di trasformarsi, cioè di modificare il tip della sua istanza, in questo caso si SPECIALIZZA. Questo procedimento si chiama BINDING DINAMICO. Per esempio quando istanziamo una superclasse Persona e specializziamo il suo oggetto nella sottoclasse Studente:
+In una situazione di ereditarietà, per polimorfismo si intende la capacità di un oggetto di trasformarsi, cioè di modificare il tipo della sua istanza, in questo caso si SPECIALIZZA. Questo procedimento si chiama BINDING DINAMICO. Per esempio quando istanziamo una superclasse Persona e specializziamo il suo oggetto nella sottoclasse Studente:
 
 `Persona per = new Studente();`
 
 In pratica stiamo sfruttando la capacità della superclasse di trasformarsi un una delle sue specifiche sottoclassi. Potremmo sfruttare il polimorfismo per, per esempio, per creare una lista di oggetti eterogenei.
 
-Si può utilizzare il polimorfismo in tutti i casi di ereditarietà, ad esempio abbiamo due tipi di polimorfismo: polimorfismo di classe e polimorfismo di interfaccia.
+Si può utilizzare il polimorfismo in tutti i casi di ereditarietà, ad esempio abbiamo diversi tipi di polimorfismo: 
+- Polimorfismo di classe e Polimorfismo di interfaccia. Per **polimorfismo di classe** si ha quando una sottoclasse sostituisce(override) o estende(overload) i metodi di una classe madre. Il **polimorfismo di interfaccia** si ha quand si implementano una o più interfacce in una classe e se ne ridefiniscono i metodi.
+- Polimorfismo dinamico e Polimorfismo statico: il **polimorfismo dinamico** (overriding) si ha quando c'è una riscrittura di un metodo ereditato (es. ToString() che ereditiamo dalla classe Object e del quale facciamo overriding ridefinendolo), mentre il **polimorfismo statico** (overloading) si ha quando abbiamo più metodi con lo stesso nome ma firme (parametri) diverse.
 
 ## 17. Che cos'è il binding dinamico?
 Quando l’istanza di una classe madre si specializza nel tipo della classe figlia. Il binding dinamico avviene solo all'avvio del programma.
@@ -112,7 +114,7 @@ All'interno del DAO (Data Access Project)  che fa parte del DAL
 ``
 
 ## 20. Cos’è una Stored Procedure?
-Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML , QL.
+Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML, QL. In pratica creiamo un sottoprogramma all'interno del nostro DBMS che ci permette di fare delle operazioni, anche parametriche, richiamandolo col il suo nome.
 
 ## 21. Cos'è lo using ?
 Lo using alloca variabili all'interno del suo contesto dette disposable, cioè alla sua conclusione grazie al garabage collector vengono eliminate dalla memoria. 
@@ -151,7 +153,11 @@ Per assicurare la coerenza dei dati, all'eliminazione di un record dalla tabella
 È la traduzione della tabella in una classe. 
 
 ## 30. Che cos'è l'ORM?
-**ORM** = Object Relational Mapping, garantito o effettuato dall'entity framework. Cea un collegamento diretto tra le tabelle che si trovano nel database e i loro record. In altre parole: se una classe genera degli oggetti, gli oggetti sono a loro volta collegati alle *righe* delle tabelle. Quindi, creando un nuovo oggetto, creerò un nuovo record!
+**ORM** = Object Relational Mapping, garantito o effettuato dall'entity framework. Cea un collegamento diretto tra il programma e le tabelle che si trovano nel database. In altre parole: se una classe genera degli oggetti, gli oggetti sono a loro volta collegati alle *righe* delle tabelle. Quindi, creando un nuovo oggetto, creerò un nuovo record!
+
+In altre parole, permette di mappare gli oggetti di un linguaggio OOP alle strutture di un DB relazionale (come tabelle, righe, colonne).
+
+Questo avviene quando installo Entity Framework nel mio programma: si può fare manualmente con il DAL (e i relativi DAO) oppure con lo scaffolding, che importerà tutto in automatico.
 
 ## 31. Perché, all'interno di una classein C# che contiene delle foreign key, l'attributo public virtual MiaClasseRifNavigation? è nullable?
 `public virtual MiaClasseRifNavigation? {get; set}` 
@@ -207,7 +213,7 @@ L'indice è una struttura che ci permette una rapida scansione dei record di una
 Il *Document Object Model* è la rappresentazione sottoforma di albero della struttura del documento HTML. È formato dai tag che rappresentano i nodi dell'albero e possiamo accedere ai nodi tramite JavaScript utilizzando, ad esempio, `document.getElementByID()` per esempio.
 
 ## 41. Che signiica che l'HTML è stateless? 
-Se modifichiamo o inseriamo dei dati nell'HTML, i dati non vengono conservati: questo perché non vengono conservati nello *stato*.
+Vuol dire che è senza stato. Se modifichiamo o inseriamo dei dati nell'HTML, i dati non vengono conservati: questo perché non vengono conservati nello *stato*.
 
 ## 42. Che cos'è il CSS?
 Nell'ambito dei linguaggi di makup, il *Cascading Style Sheet* rappresenta lo stile del nostro documento che può essere associato al nostro documento HTML. È un insieme di regole che vengono applicate a tutti gli elementi del DOM, vanno quindi a modificare la grafica della nostra applicazione.
@@ -248,8 +254,12 @@ Il C# il **Dao** (Data Access Object) è un pattern di programmazione che rappre
 È l'operazione che ci permette di ridefinire un attriuto o un metodo di una classe genitore. Nella classe genitore deve avere la parola chiave **abstract** che indica che quel metodo deve essere necessariamente implementato nelle sottoclassi.
 
 ## 55. Che cos'è la composizione e come viene utilizzata?
+Rappresenta una relazione di possesso stretto e dipendenza: ad esempio un mazzo di fiori, che senza i fiori non esiste. Ad esempio un contenitore (lista, ienumerable ecc.) non esiste se non ha del contenuto (oggetti o valori) al suo interno.
+`public List<Fiori> {get; set;};`
 
 ## 56. Che cos'è l'aggregazione e come viene utilizzata?
+Rappresenta una relazione di collaborazione dove gli oggetti e il loro contenitore possono esistere indipendentement gli uni dagli altri.  Ad esempio un archivio continua ad esistere senza gli elementi al suo interno.
+`public List<Archivio> {get; set;} = new List<Archivio>()`
 
 ## 57. Che cos'è l'UML?
 **Unified Modeling Language**.
@@ -373,8 +383,16 @@ Principio della programmazione ad oggetti // da implementare //
 - GetHasCode() restitusce un valore numerico che identifica un certo oggetto. Non verifica il contenuto della variabile, serve proprio per identificare due oggetti siano effettivamente due oggetti diversi.
 
 ## 96. Come funziona il pattern MVC?
+Il pattern di programmazione MODEL VIEW CONTROLLER: nel model definiamo le classi che valoriazziamo attraverso la logica scritta nel controller. Accediamo alla logica attraverso le View, che rappresentano l'unico punto di comunicazione tra l'utente e la logica del programma.
+
+Es.: attraverso un form compiato dall'utente nella view (la parte visualizzata composta da HTML ecc.), inviamo la richiesta al controller che si occupa della gestione dei dati inviati, e li confronta con il model. Poi, a seconda della struttura del progetto può essere il controller ad inviare i dati al database, oppure può essere il model ad occuparsi di questa operazione (attraverso le strutture intermediare di Repo, Services e DTO).7
+
+View ↔ Controller ↔ Model
+
+View ↔ Controller ↔ Service(DTOs) ↔ Models(Repositories) ↔ DBMS
 
 ## 97. Invece con Angular? (MVVM)
+
 
 ## 98. Cos'è il two way binding?
 
@@ -397,6 +415,7 @@ Una complient architecture basata su due attori: Client e Server. La comunicazio
 Quando il server ha effettuato qualsiasi tipo di operazione richiesta, manterà la sua HTTP RESPONSE in cui mette nell'HEADER mittende, destinatario e lo stato della richiesta mentre nel payload il risultato dell'operazione.
 
 ## 102. Che cos'è POSTMAN?
+Programma che utilizziamo per comunicare con il database attraverso le API. Attraverso PostMan possiamo fare tutte le operazioni CRUD (CREATE, READ, UPDATE e DELETE) tramite le operazioni di GET, POST, PUT e DELETE.
 
 ## 103. Che cos'è una REST API? 
 In una architettura CLIENT SERVER, una REST API è una metodologia di comunicazione che comunica in HTTP, che invia il body in formato JSON.
