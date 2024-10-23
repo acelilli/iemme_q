@@ -3,7 +3,7 @@ In generale, una classe si può definire come una aggregazione di metodi e attri
 
 Una classe astratta è una classe che non può essere istanziata. È un'astrazione, una sorta di stampo che contiene attributi e metodi che verranno poi ereditati dalle sue sottoclassi. Una classe astratta viene ESTESA da una sottoclasse.
 
-Un metodo astratto è un metodo SENZA CORPO che deve essere necessariamente essere ereditato da una sottoclasse tramite la parola chiave OVERRIDE che ci permette di riscrivere il metodo nella sottoclasse.
+Un metodo astratto è un metodo SENZA CORPO che deve essere necessariamente essere ereditato da una sottoclasse tramite la parola chiave OVERRIDE che ci permette di riscrivere il metodo nella sottoclasse, quando nella superclasse è specificata la parola chiave VIRTUAL.
 
 ## 2. Che cos'è la classe Object?
 Object è la **superclasse** dalla quale derivano tutte le entità.
@@ -124,6 +124,18 @@ All'interno del DAO (Data Access Project)  che fa parte del DAL
 
 ## 20. Cos’è una Stored Procedure?
 Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML, QL. In pratica creiamo un sottoprogramma all'interno del nostro DBMS che ci permette di fare delle operazioni, anche parametriche, richiamandolo col il suo nome.
+
+`CREATE PROCEDURE NomeProcedure
+ @parametro VARCHAR(250)
+ --altri eventuali parametri
+AS
+ BEGIN INSERT INTO miaTabella(nomeColonna) VALUES (@parmetro);
+  PRINT 'Inserimento effettuato con successo'
+ END;`
+
+ Per richiamare la procedura:
+ 
+ `EXEC NomeProcedura = 'valore'`
 
 ## 21. Cos'è lo using ?
 Lo using alloca variabili all'interno del suo contesto dette disposable, cioè alla sua conclusione grazie al garabage collector vengono eliminate dalla memoria. 
@@ -431,7 +443,8 @@ Pattern di programmazione, "Model View Controller" // da integrare //. Si utiliz
 ## 86. Che cos'è MVVM?
 Model View ViewModel, è la struttura utilizzata da Angular: potenzia all'estremo l'MVC. // da integrare //
 
-## 87. Che cos'è il navigator/la if navigation(?)? Qual è l'obiettivo?
+## 87. Che cos'è il navigator/rif navigation(?)? Qual è l'obiettivo?
+
 
 ## 88. Come si chiamano le modalità con cui si portano dietro gli oggetti entity framework?
 Sono modalità di recupero di informazioni dal database.
@@ -446,6 +459,7 @@ Principio della programmazione ad oggetti // da implementare //
 
 ## 91. Cosa intendiamo per Astrazione?
 L'astrazione consente di modellare entità del mondo reale o concetti complessi attraverso interfacce o classi astratte , consiste nel ridurre la complessità mostrando solo gli aspetti esesnsiali di un oggetto nascondendo i dettagli implementatitvi. 
+
 ## 92. Che cos'è un metodo astratto?
 E' un metodo che viene dichiarato ma non ha corpo (non ha un'implementazione nella classe astratta), deve essere implementato da tutti le casi derivare concrete, può essere dichiarato soltanto da una calse astratta. 
 ## 93. Che cos'è l'interfaccia in typescript?
@@ -476,6 +490,7 @@ Utilizza cioè una struttura come quella dell'MVC: il **model** contiene le clas
 
 ## 98. Cos'è il two way binding?
 
+
 ## 99. Due variabili possono puntare alla stssa locazione di memoria?
 Sì. Se per esempio creiamo una variabile alla quale assegnamo come valore un'altra variabile, entrambe punteranno alla stessa locazione in memoria. Es:
 
@@ -493,7 +508,6 @@ AddSingleton() ASP.NeT crea una solo istanza del servizion che viene condivisa i
 
 ## 101. Che cos'è una architettura Client/Server? Come funzionano l'Http Request e l'Http response? 
 Una complient architecture basata su due attori: Client e Server. La comunicazione avviene tramite protocolli HTTP, in cui il CLIENT tramite la HTTP REQUEST manda una richiesta, detta HEADER (che contiene mittente, destinatario e payload).
-// Post
 Quando il server ha effettuato qualsiasi tipo di operazione richiesta, manterà la sua HTTP RESPONSE in cui mette nell'HEADER mittende, destinatario e lo stato della richiesta mentre nel payload il risultato dell'operazione.
 
 ## 102. Che cos'è POSTMAN?
@@ -523,7 +537,23 @@ Contesto che permette di accedere all'Http Response e l'Http Request.
 Sono metodi forniti dalla libreria di Newtonsoft_Json(Json.NET), il primo ovvero Serialize permette di salvare l'oggetto in un formato dati Json che può essere facilemte memorizzato e trasmesso, mentre il secondo lo utilizziamo per ricostruire un oggeto appartier da una stringa Json.
 
 ## 109. Che cos'è await async?
-Sono utiizzati per gestire la programmazione asincrona in modo più semplice e legibile. consentono di scrivre codice asincrono che appare e si comporta in modo sincrono. (migliorando la gestione delle promesse).
+Parole chiave utilizzate per gestire la programmazione asincrona in modo più semplice e leggibile. Consentono di scrivre codice asincrono che appare e si comporta in modo sincrono (migliorando la gestione delle promesse). 
+
+Cioè, dichiarando una funzione come asincrona, la rendiamo automaticamente una **promessa** della quale aspettiamo la risoluzione. Ogni promise è univoca, quindi fa le propre "domande" e da solamente le proprie risposte. Inoltre, una promessa non è bloccante: il programma non aspetta la sua risoluzione per continuare le proprie funzionalità, e il ciclo di vita della promise dipende *unicamente* dalla sua resolve o reject.
+
+
+`async function getSomething() {
+  try {
+    const data = await url('MIOURL');
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}`
+
+In altre parole, con **async** creiamo una sorta di "thread" parallelo al nostro programma, in cui tutto ciò che NON è async, fa parte de thread principale. 
+
+Utilizzando `await` invece faccio sì che la funzione asincrona torni ad essere sincrona, quindi il programma ne **aspetterà** la risposta.
 
 ## 110. Rest API?
 Stile architetturale per sistemi distribuiti. Rappresenta un sistema di trasmissione di dati su http, i sistemi Rest non prevedono il concetto di sessione, ovvero sono stateless. 
@@ -531,8 +561,30 @@ Stile architetturale per sistemi distribuiti. Rappresenta un sistema di trasmiss
 ## 111. Cos'è la fetch?
 Fetch è un'API JavaScript moderna utilizzata per effettuare richieste di rete (HTTP) e recuperare risorse, come dati da un server. Effettua richieste asimcrone. Le fetch restituiscono un promise che risolve la risposta della richiesta, supporta i vari metodi del HTTP (GET, POST,PUT,DELETE), gestisce ancje diversi formati di dati. 
 
-## 112 ViewBag cos'è?
+## 112. ViewBag cos'è?
 ViewBag è un oggetto dinamico fornito dal framework ASP.NET MVC (e ASP.NET Core) che consente di passare dati dalla controller alla view senza dover definire un modello fortemente tipizzato. È utile per inviare dati temporanei o informazioni che non giustificano la creazione di un modello completo.
+
+## 113. Cosa sono i cookies e le session?
+Per cookie  intendiamo una riserva nella memoia, un piccolo storage composto da elementi chiave-valore. Viene emesso dal client, tuttavia è il server che dice al client come è fatto il cookie (gli fornisce la "ricetta"). La sessione invece è la sessione di comunicazione al server.
+
+## 114. Che cos'è RAZOR?
+Razor è un **template engine**, cioè è un sistema che prende delle strutture comuni e le restituisce all'utente, cioè ci aiuta a creare delle pagine dinamiche HTML. 
+
+## 115. Che cos'è un Form?
+Elemento HTML che permette il trasferimento di stato, definibile come un tag HTML per il trasferimento di dati. Può fare solamente **get** e **post**, in maniera **sincrona**. 
+`<form method="POST" asp-controller:"cliente" asp-action="salva">`
+
+`<div class="mt-3">`
+
+`<label class="form-label"> Nome: </label>`
+
+`<input type="text" class="form-control" asp-for="Nome"/>`
+
+`</div>`
+
+`</form>`
+
+
 
 ---
 
