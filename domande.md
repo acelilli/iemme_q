@@ -584,6 +584,17 @@ Elemento HTML che permette il trasferimento di stato, definibile come un tag HTM
 
 `</form>`
 
+## 116. Cosa sono i tipi union in typescript?
+
+## 117. Che cos'è un component in Angular? E come si genera un component?
+`ng generate new component component/component` (in cui il comando prima della slash è il nome della cartella e quello dopo il nome della cartella è il nome del file.
+
+Tripla di file composta da un file typescript (che corrisponde al controller MVC), la parte di visualizzazione e il suo CSS.
+
+## 118. Che cos'è una callback?
+Evento che viene attivato quando qualcuno ci risponde. Cioè, secondo l'architettura client-server, per ogni richiesta del client riceve una risposta del server, la callback è ciò che viene attivato quando arriva una risposta.
+
+
 
 
 ---
