@@ -594,8 +594,11 @@ Tripla di file composta da un file typescript (che corrisponde al controller MVC
 ## 118. Che cos'è una callback?
 Evento che viene attivato quando qualcuno ci risponde. Cioè, secondo l'architettura client-server, per ogni richiesta del client riceve una risposta del server, la callback è ciò che viene attivato quando arriva una risposta.
 
+## 119. Perchè utilizzo obj.Nome == "nome" e non obj.Nome.Equals("nome") ?
+Compara se questi due elementi sono effettivamente uguali, mentre utilizzando Equals dobbiamo avere la certezza che non è null.
 
-
+## 120. Che cos'è un claim?
+Rappresenta ciò che richiede il server per considerare autenticato un utente, è una combinazione chiave/valore.
 
 ---
 
