@@ -49,14 +49,22 @@ Con *private* posso quindi nascondere i dettagli costruttivi (attributi, metodi,
 ## 13. Che cos'è una stored procedure?
 Nel contesto del database una stored proedure è un innesto di linguaggo di programmazione che ci permette di fare DDL (es. con le tablle temporanee), DML e QL. Cioè ci permette di compiere un'azione complessa richiamandola in maniera semplice.
 
-Es. di Stored Procedure in cui inseriamo un valore in una tabella:
-`CREATE PROCEDURE inserimento_nominativo`
-`@nominativo VARCHAR(150)`
+Es. di Stored Procedure in cui inseriamo un valore in una tabella, controlland che il valore di sario sia maggiore o uguale a 0:
+`CREATE PROCEDURE InserisciImpiegato` 
+`	@varNome VARCHAR(250) NOT NULL,`
+`	@varSalario DECIMAL(10,2)`
 `AS`
 `BEGIN`
-`  INSERT INTO Mia_Tabella(nome)`
-`  VALUES('Nome Cognome')`
-`END;`
+`	IF @varSalario >= 0`
+`	BEGIN`
+`		INSERT INTO Impiegato(nome, salario) VALUES (@varNome, @varSalario);`
+`		PRINT 'INSERIMENTO EFFETTUATO CON SUCCESSO'`
+`	END`
+`	ELSE`
+`	BEGIN`
+`		PRINT 'ERRORE'`
+`	END`
+`END`
 
 ## 14. Che cos'è una left join?
 Esempio di Join (che di default è INNER Join) quindi ci mostrerà tutti i record in persona che hanno una carta:
@@ -123,15 +131,15 @@ All'interno del DAO (Data Access Project)  che fa parte del DAL
 `private PersonaDao() {}`
 
 ## 20. Cos’è una Stored Procedure?
-Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML, QL. In pratica creiamo un sottoprogramma all'interno del nostro DBMS che ci permette di fare delle operazioni, anche parametriche, richiamandolo col il suo nome.
+(anche domanda 13) Una stored procedure è un innesto di linguaggio di programmazione che ci permette di fare DML e QL. In pratica creiamo un sottoprogramma all'interno del nostro DBMS che ci permette di fare delle operazioni, anche parametriche, richiamandolo col il suo nome.
 
-`CREATE PROCEDURE NomeProcedure
- @parametro VARCHAR(250)
- --altri eventuali parametri
-AS
- BEGIN INSERT INTO miaTabella(nomeColonna) VALUES (@parmetro);
-  PRINT 'Inserimento effettuato con successo'
- END;`
+`CREATE PROCEDURE NomeProcedure`
+` @parametro VARCHAR(250)`
+` --altri eventuali parametri`
+`AS`
+` BEGIN INSERT INTO miaTabella(nomeColonna) VALUES (@parmetro);`
+`  PRINT 'Inserimento effettuato con successo'`
+` END;`
 
  Per richiamare la procedura:
  
@@ -272,17 +280,17 @@ Nel contesto dei database, la View è una struttura, dichiarata in DDL, che può
 
 Un'operazione di proiezione consente di determinare, ad esempio, delle singole colonne da una tabella per visualizzarne i dati. 
 
-`CREATE VIEW vw_OrdiniPerUtente AS
-SELECT 
-    u.Nome,
-    u.Cognome,
-    SUM(o.Importo) AS TotaleOrdini
-FROM 
-    Utenti u
-JOIN 
-    Ordini o ON u.IdUtente = o.IdUtente
-GROUP BY 
-    u.Nome, u.Cognome;`
+`CREATE VIEW vw_OrdiniPerUtente AS`
+`SELECT `
+`    u.Nome,`
+`    u.Cognome,`
+`    SUM(o.Importo) AS TotaleOrdini`
+`FROM `
+`    Utenti u`
+`JOIN `
+`    Ordini o ON u.IdUtente = o.IdUtente`
+`GROUP BY `
+`    u.Nome, u.Cognome;`
 
 ## 48. Come funziona il protected?
 Data una situazione ereditaria, settando una property come protected, potranno accedervi **solo** una superclasse e i suoi discendenti. Invece con il private, potrà accedervi solo la classe stessa.
@@ -433,25 +441,58 @@ Per gestire gli errore utilizziamo la ROLLBACK all'interno di un try catch. (cos
 E' composto da due sezioni principali: Head, che è la parte che non viene visualizzata dall'utente e contiene delle informazioni tecniche relative all'utente. Descrivono al browser come codeficare i caratteri, o descrivere la scala del sito. L'unico tagg all'interno di head visualizzato dall'utnte è il title, nella barra del browser. Nel body è racchiuso il contenuto vero e proprio della pagina, visibile dagli utenti. Possiamo suddividere a sua volta il body in header, main e footer.
 
 ## 82. Un metodo per collegarsi al DB senza entity framework? Quale libreria si usa?
-// DAO
+Posso collegarmi ad un db senza utilizzare Entity Framework tramite la libreria ADO.NET, tra i suoi elementi abbiamo, per esempio `SqlConnection` per stabilire la connessione, `SqlCommand` per eseguire comandi SQL, `SqlDataReader` per leggere i risultati di una query.
+
+Per esempio:
+`string connectionString = "Server=myServer;Database=myDB;User Id=myUsername;Password=myPassword;";`
+
+`try {`
+
+`      connection = new SqlConnection(connectionString);`
+
+`      connection.Open();`
+
+`      string query = "SELECT * FROM Users";`
+
+`     using (SqlCommand command = new SqlCommand(query, connection))`
+
+`     {`
+
+`       // qui userò il SqlDataReader reader = command.ExecuteReader() e altre operazioni`
+
+`     }`
+
+`} catch(Exception ex) `
+
+`     {`
+
+`       // Console log dell'errore o altro`
+
+`     } finally {`
+
+`      connection.Close();`
+
+`     }`
+        
+Possiamo implementare inoltre il **DAO** insieme ad ADO.NET, nel quale possiamo gestire l'accesso ai dati ad una tabella, isolando la logica d'accesso ai dati.
 
 ## 83. Che cosa sono i Services e cosa fanno?
 Rappresentano la logica del progetto in cui si effettua lo scambio dato tra quelli che devono essere accessibile dagli utenti (DTO) e quelli che vengono effettivamente mandati al DB (attraverso i model) i services possono comunicare solo con gli altri services, i DTO e le Repositories.
 
 ## 84. Che cos'è il costruttore? E come è fatto in Javascript e in typescript?
-Il cotruttore è il primo metodo che viene richiamato quando istanziamo una classe.  I costruttori sono implicitamente pubblici, per inibirli possiamo renderlo privato, ma se stiamo scrivendo una superclasse, basterà definire la classe come astratta. 
-Possiamo fare overload del costruttore dandogli dei parametri. Tuttavia facendolo in una superclasse inibiremmo anche il costruttore delle classi figlie, quindi è una pratica sconsigliata.
+Il cotruttore è il primo metodo che viene richiamato quando istanziamo una classe. 
+- In C# I costruttori sono implicitamente pubblici, per inibirli possiamo renderli privati, ma se stiamo scrivendo una superclasse, basterà definire la classe come astratta.  Possiamo fare overload del costruttore dandogli dei parametri. Tuttavia facendolo in una superclasse inibiremmo anche il costruttore delle classi figlie, quindi è una pratica sconsigliata.
 - In C# richiamiamo il constructor semplicemente utilizzando il `new`
 - In **JavaScript** e in **Typescript** viene richiamato il constructor con il metodo speciale `constructor()`, inoltre in **TS** possiamo tipizzarne i parametri.
 
 ## 85. Che cos'è MVC? E perchè dovrei usarlo?
-Pattern di programmazione, "Model View Controller" // da integrare //. Si utilizza poichè è facilmente scalabile e mantenibile.
+Pattern di programmazione, "Model View Controller" // **guarda domande 68 e 96** //. Si utilizza poichè è facilmente scalabile e mantenibile.
 
 ## 86. Che cos'è MVVM?
-Model View ViewModel, è la struttura utilizzata da Angular: potenzia all'estremo l'MVC. // da integrare //
+Model View ViewModel, è la struttura utilizzata da Angular: potenzia all'estremo l'MVC. // **guarda domanda 97** //
 
-## 87. Che cos'è il navigator/rif navigation(?)? Qual è l'obiettivo?
-
+## 87. Che cos'è il navigator/rifnavigator? Qual è l'obiettivo?
+In C#, quando utilizziamo **Entity Framework**, un navigator rappresenta un'oggetto al quale fa riferimento una chiave esterna. Cioè, quando abbiamo due tabelle con una relazione, nella quale quindi una delle due ha un riferimento (una *foreign key*) all'altra, **Entity Framework** genererà automaticamente questa proprietà per accedere agli oggetti correlati.
 
 ## 88. Come si chiamano le modalità con cui si portano dietro gli oggetti entity framework?
 Sono modalità di recupero di informazioni dal database.
@@ -496,6 +537,11 @@ Il pattern MVVM (MODEL VIEW VIEWMODEL) rappresenta un potenziamento dell'MVC, ma
 Utilizza cioè una struttura come quella dell'MVC: il **model** contiene le classi e rappresenta il collegamento tra la business logic e i dati. La **view**, come in MVC è la parte HTML con cui comunica l'utente che visualizza i dati. Il ViewModel è un intermediario tra i model e le view: raccoglie i dati e gestisce gli eventi. Interagisce con la view utilizzando il **data binding** , cioè accedendo ai dati `prod.Nom`.
 
 ## 98. Cos'è il two way binding?
+Caratteristica di **Angular** che permette la sincronizzazione tra i modelli e le viste. In pratica qualsiasi modifica apportata ai dati nel modello si riflette immediatamente nella vista e viceversa! Per implementare il **two way binding** nel nostro codice implementiamo `ngModel` in questo modo:
+
+`<input [(ngModel)]="nome" placeholder="Inserisci il tuo nome">`
+
+`<p>Ciao, {{ nome }}!</p>`
 
 
 ## 99. Due variabili possono puntare alla stssa locazione di memoria?
@@ -549,14 +595,21 @@ Parole chiave utilizzate per gestire la programmazione asincrona in modo più se
 Cioè, dichiarando una funzione come asincrona, la rendiamo automaticamente una **promessa** della quale aspettiamo la risoluzione. Ogni promise è univoca, quindi fa le propre "domande" e da solamente le proprie risposte. Inoltre, una promessa non è bloccante: il programma non aspetta la sua risoluzione per continuare le proprie funzionalità, e il ciclo di vita della promise dipende *unicamente* dalla sua resolve o reject.
 
 
-`async function getSomething() {
-  try {
-    const data = await url('MIOURL');
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-}`
+`async function getSomething() {`
+
+ ` try {`
+ 
+ `   const data = await url('MIOURL');`
+ 
+ `   return data;`
+ 
+ ` } catch (error) {`
+ 
+`    console.error(error);`
+
+`  }`
+
+`}`
 
 In altre parole, con **async** creiamo una sorta di "thread" parallelo al nostro programma, in cui tutto ciò che NON è async, fa parte de thread principale. 
 
@@ -624,7 +677,7 @@ Un JWT è composto tre parti divise da un punto, in cui:
     - iat = non è “rinfrescabile”, cioè è una sorta di current tipe stamp cioè ci si sovrá riatuenticare.
 - Verify signature: creata in relazione con le due precedenti: qualsiasi cosa cambia nell’ precedenti, la verify signature anche cambierá.
 
-Cioe, di base potremmo accedere ai dati che salviamo e storiamo del payload. Tuttavia, la signature é del tutto personale e anche provando a rubare i dati nel payload, non potrò mai accedere con quei valori.
+Cioè, di base potremmo accedere ai dati che salviamo e storiamo del payload. Tuttavia, la signature é del tutto personale e anche provando a rubare i dati nel payload, non potrò mai accedere con quei valori.
 
 ## 123. Che cos'è il builder?
 
@@ -632,7 +685,7 @@ Cioe, di base potremmo accedere ai dati che salviamo e storiamo del payload. Tut
 
 ## 125. Cosa sono i moduli in typescript?
 
-
+## 126. Cosa intendiamo per proiezioni? (DB)
 
 ---
 
