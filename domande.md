@@ -632,7 +632,7 @@ Cioe, di base potremmo accedere ai dati che salviamo e storiamo del payload. Tut
 
 ## 125. Cosa sono i moduli in typescript?
 
-
+## 126. Che cos'è il DTO?
 
 ---
 
