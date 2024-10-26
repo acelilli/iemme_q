@@ -256,9 +256,9 @@ Un'interfaccia è composta unicamente da metodi vuoti. Una classe astratta invce
 Tecnicamente è un array statico di Object (cioè l'array può essere considerato come una tabella di Object), dei quali gli oggetti nell'array corrisponderanno ai record della tabella.
 
 ## 45. Che cos'è un'arrow function?
-Funzione che non ha bsogno della keyword function, può venire associata ad una variabile (preferibilmente una const), che permette di scrivere una funzione in maniera molto più sintetica.
+Funzione che non ha bisogno della keyword function, può venire associata ad una variabile (preferibilmente una const) oppure essere anonima (es. quando si tratta di una callback), che permette di scrivere una funzione in maniera molto più sintetica. Si tratta, in pratica, di una una sintassi compatta introdotta in JavaScript (e presente anche in altri linguaggi), caratterizzata dall'utilizzo della freccia `=>`, utile per definire funzioni brevi.
 
-`const miaFunzione = (param) => param * 2` 
+`const somma = (a, b) => a + b;` 
 
 In presenza di un solo parametro, le parentesi tonde possono anche non venire scritte.
 
@@ -272,7 +272,17 @@ Nel contesto dei database, la View è una struttura, dichiarata in DDL, che può
 
 Un'operazione di proiezione consente di determinare, ad esempio, delle singole colonne da una tabella per visualizzarne i dati. 
 
-`Esempio di codice qui`
+`CREATE VIEW vw_OrdiniPerUtente AS
+SELECT 
+    u.Nome,
+    u.Cognome,
+    SUM(o.Importo) AS TotaleOrdini
+FROM 
+    Utenti u
+JOIN 
+    Ordini o ON u.IdUtente = o.IdUtente
+GROUP BY 
+    u.Nome, u.Cognome;`
 
 ## 48. Come funziona il protected?
 Data una situazione ereditaria, settando una property come protected, potranno accedervi **solo** una superclasse e i suoi discendenti. Invece con il private, potrà accedervi solo la classe stessa.
@@ -284,7 +294,7 @@ All'interno di un progetto fa sì che altre soluzioni non possono accedere alle 
 è una parola chiave che utilizziamo per far sì che si possa avere accesso ad un dato in sola lettura. Cioè, questo dato non sarà in alcun modo modificabile.
 
 ## 51. Che cos'è il DAO?
-Il C# il **Dao** (Data Access Object) è un pattern di programmazione che rappresenta il legame tra il codice sorgente ed il database. Diversi DAO sono contenuti in una cartella DAL (Data Acces Layer). Il DAO rappresenta quindi un'interfaccia (detta **IDao**) che implementiamo dei DAO nei nostri componenti per definirne i metodi.
+Il C# il **Dao** (Data Access Object) è un design pattern di programmazione per la gestione dei dati, il cui compito è separare la logica applicativa dalla gestione della persistenza. Rappresenta il legame tra il codice sorgente ed il database. Diversi DAO sono contenuti in una cartella DAL (Data Acces Layer). Il DAO rappresenta quindi un'interfaccia (detta **IDao**) che implementiamo nei DAO nei nostri componenti per definirne i metodi (es. `PersonaDAO : IDAO` ).
 
 ## 52. Esempi di relazioni one to one, one to many e many to many?
 - One to One: una persona ha solo una carta di identità (o codice fiscale...)
@@ -295,7 +305,7 @@ Il C# il **Dao** (Data Access Object) è un pattern di programmazione che rappre
 Possiamo definire C# come un linguaggio fortemente tipizzato.
 
 ## 54. Che cosa significa override?
-È l'operazione che ci permette di ridefinire un attriuto o un metodo di una classe genitore. Nella classe genitore deve avere la parola chiave **abstract** che indica che quel metodo deve essere necessariamente implementato nelle sottoclassi.
+È l'operazione che ci permette di ridefinire un attriuto o un metodo di una classe genitore. Nella classe genitore deve avere la parola chiave **vitual** che indica che quel metodo deve essere necessariamente implementato nelle sottoclassi.
 
 ## 55. Che cos'è la composizione e come viene utilizzata?
 Rappresenta una relazione di possesso stretto e dipendenza: ad esempio un mazzo di fiori, che senza i fiori non esiste. Ad esempio un contenitore (lista, ienumerable ecc.) non esiste se non ha del contenuto (oggetti o valori) al suo interno.
@@ -310,8 +320,8 @@ Rappresenta una relazione di collaborazione dove gli oggetti e il loro contenito
 
 Invece per tracciare le tabelle di un Database si utilizza il ERD (Diagramma entità relazionale).
 
-## 58. Che succederebbe se, in una situazione ereditaria, scrivessi un costritture parametrico nella superclasse?
-In una situazione ereditaria, scrivendo un costruttore parametrico sovrascrivo il costruttore di default! Quindi è bsempre bene dichiarare il costruttore senza parametri, quello di default, nella superclasse per non sovrascriverlo!
+## 58. Che succederebbe se, in una situazione ereditaria, scrivessi un costruttore parametrico nella superclasse?
+In una situazione ereditaria, definendo un costruttore parametrico, questo andrà a sostituire quello di default se non è esplicitamente definito! Quindi è bsempre bene dichiarare il costruttore senza parametri, quello di default, nella superclasse per non sovrascriverlo.
 
 ## 59. Che cos'è GIT?
 È un sistema di controllo di versionamento (VCS - Version Control System): cioè permette di tracciare le modifiche ai file di un progetto e coordinare il lavoro tra più sviluppatori.  **GitHub** è una repository remota.
@@ -329,7 +339,7 @@ Modalità che permette di fare il commit da un branch al main quando non ci sono
 Nel contesto di Git, possiamo avere dei conflitti quando vengono apportate delle modifiche ad una parte del codice che git non è in grado di unire automaticamente: può accadere se per esempio due sviluppatori stanno lavorando alla stessa parte di codice, può succedere durante l'uso di branch (ramificazioni) o durante le operazioni di push e merge.
 
 ## 64. Che cos'è un CDN?
-*Contact Delivery Network* è un computer o un serve super ottimizzato, dedicato **solo** alla delivery di un certo file, quindi fornendolo nella maniera più ottimizzata.
+*Content Delivery Network* è un computer o un serve super ottimizzato, dedicato **solo** alla delivery di un certo file, quindi fornendolo nella maniera più ottimizzata.
 
 ## 65. Qual è la differenza tra null e undefined in JavaScript?
 Rappresentano tipologie di valori vuoto, in cui:
@@ -345,15 +355,12 @@ Rappresentano tutti e tre dei valori **falsy* cioè possono rappresentare tutti 
 ## 66. Paradigma client-server:
 Architettura di rete nella quale i client (computer, browser...) si connette ad un server (computer contenenti file fisici che costituiscon es. siti web) per usufruire di un servizio. Da un client connesso ad internet è possibile inviare una richiesta ad un server (**Http Request**) e dal server è possibile ricevere la risposta alla richiesta (**Http Response**)
 
+Una architettura http deve stare a delle regole, cioè i **protocolli**. Il client utilizza il protocollo http per fare una richiesta. Una richiesta http è una richiesta di dati o servzi.
+- *HTTP*: Hyper Text Transfer Protocol, protocollo di trasferimento dati utilizzato per comunicare tra client e server in architetture client-server. Il protocollo HTTP è stateless: non conserva i dati delle richieste o delle risposte. 
 - *Client*: qualsiasi strumento in grado di fare delle richieste http.
-- Una architettura http deve stare a delle regole, cioè i **protocolli**. Il client utilizza il protocollo http per fare una richiesta. Una richiesta http è una richiesta di dati o servzi. Es. una API: cioè una tipologia di elemento che ci restituisce qualcosa alla richiesta.
+- *Http request* al suo in terno sono specificati il mittente, il destinatario e un payload (il contenuto). Per funzionare, al paradigma HTTP deve essere associata una *response*. Con il browser posso fare esclusivamente richieste *get*, per creare delle richieste di post ho bisogno di un simulatore (es. PostMan).
 - *Server*: è il computer al quale chiediamo i servizi e ci fornisce quindi una Http Response.
-
-Richiesta HTTP: Hyper Text Transfer Protocol. Una richiesta HTTP è stateless: non conserva i dati della precedente richiesta. Per funzionare, al paradigma HTTP deve essere associata una *response*.
-
-HTTP request e HTTP Response:
-- **Http request** può essere effettuata in due modi: get e post. Al suo in terno sono specificati il mittente, il destinatario e un payload (il contenuto). Con il mio browser posso fare esclusivamente richieste *get*, per creare delle richieste di post ho bisogno di un simulatore.
-- **Http response** contiene il mittente, il destinatario, uno status code e un payload opzionale.
+- **Http response** la risposta HTTP contiene il mittente, il destinatario, uno status code e un payload opzionale.
 
 ## 67. Status code:
 - 100 informativo
@@ -377,13 +384,13 @@ Nel contesto dei database applichiamo i principi ACID quando implementiamo le tr
 - A => Atomicità: Ogni transazione deve essere totale o nulla, non amette esecuzioni parziali. Si assicura che le operazioni all'interno della **transazione** avvengano come una unità indivisibile.
 - C => Coerenza: Se c'è un vincolo di integrità, questo non può essere contraddetto, cioè mantiene la coerenza dei dati all'interno del **database**.
 - I => Isolamento: Ogni **transazione** deve essere eseguita in maniera isolata e indipendente, a blocco e sequenziale, cioè non interferisce con le altre!
-- D = Durabilità: Se la modifiche vanno a buon fine, non si può tornare indietro, aggiornando in ogni caso lo stato del **database**! 
+- D = Durabilità: Se la modifiche vanno a buon fine, non si può tornare indietro, aggiornando in ogni caso lo stato del **database**! Cioè garantisce che i dati, una volta confermati, persistano nel sistema.
 
 ## 71. Vincoli interni e vincoli esterni:
-Vincoli esterni, nel contesto del database, sono ad esempio quando dichiariamo il tipo di dato (VARCHAR, INT ecc.) o anche UNIQUE, NOT NULL...mentre i vincoli esterni per esempio sono le Foreign Key.
+Vincoli esterni o *intrinsechi*, nel contesto del database, sono ad esempio quando dichiariamo il tipo di dato (VARCHAR, INT ecc.) o anche UNIQUE, NOT NULL...mentre i vincoli esterni o *referenziali* per esempio sono le Foreign Key.
 
 ## 72. Cosa sono i tipi primitivi e quali sono?
-Sono tipi che non posso essere nè mmodificati nè scomposti,
+Sono tipi che non posso essere nè modificati nè scomposti, alcuni di essi sono int, char, float...
 
 ## 73. In C# cos'è una var? Posso fare una lista di var?
 In C# una variabile dichiarata come `var` è una variabile del quae il tipo viene determinato al momento della compilazione ma che **non può cambiare**. Cioè anche se cambiamo il valore di quella variabile, se viene istanziata come string allora dovrà essere una string anche la sua modifica.
@@ -502,9 +509,9 @@ Visto che entrambi puntano alla stessa cella di memoria, modificando uno verrà 
 
 ## 100. Cosa sono AddTransient(), AddSingleton() e AddScoped()?
 Nell'ambito di una applicazione API WEB nel nostro progran.cs implementiamo questi metodi per registrare i servizi. Essi definiscono il ciclo di vita dei servizzi all'interno dell'applicazione especificando quando le istanze di un servizio vengono create e gestite. 
-AddTransient()--> ASP.NET crea una nuova istanza del servizio ogni qual volta viene richiesto.
-AddScope()--> ASP.NET crea una nuova istanza del servizio per ogni richiesta HTTP. 
-AddSingleton() ASP.NeT crea una solo istanza del servizion che viene condivisa in tutta l'applicazione. 
+- AddTransient()--> ASP.NET crea una nuova istanza del servizio ogni qual volta viene richiesto.
+- AddScope()--> ASP.NET crea una nuova istanza del servizio per ogni richiesta HTTP.
+- AddSingleton() ASP.NeT crea una solo istanza del servizion che viene condivisa in tutta l'applicazione. 
 
 ## 101. Che cos'è una architettura Client/Server? Come funzionano l'Http Request e l'Http response? 
 Una complient architecture basata su due attori: Client e Server. La comunicazione avviene tramite protocolli HTTP, in cui il CLIENT tramite la HTTP REQUEST manda una richiesta, detta HEADER (che contiene mittente, destinatario e payload).
@@ -565,7 +572,11 @@ Fetch è un'API JavaScript moderna utilizzata per effettuare richieste di rete (
 ViewBag è un oggetto dinamico fornito dal framework ASP.NET MVC (e ASP.NET Core) che consente di passare dati dalla controller alla view senza dover definire un modello fortemente tipizzato. È utile per inviare dati temporanei o informazioni che non giustificano la creazione di un modello completo.
 
 ## 113. Cosa sono i cookies e le session?
-Per cookie  intendiamo una riserva nella memoia, un piccolo storage composto da elementi chiave-valore. Viene emesso dal client, tuttavia è il server che dice al client come è fatto il cookie (gli fornisce la "ricetta"). La sessione invece è la sessione di comunicazione al server.
+Per cookie  intendiamo una riserva nella memoia, un piccolo storage composto da elementi chiave-valore. Viene emesso dal client, tuttavia è il server che dice al client come è fatto il cookie (gli fornisce la "ricetta"). I cookies sono indipendenti tra loro e hanno una "scadenza". La sessione invece è la sessione di comunicazione al server.
+
+il cookie è debole (perché può essere modificato) e può salvare informazioni semplici per operazioni di basso impatto, sappiamo quindi che la sicurezza viene generalmente affidata alla sessione. 
+
+Una sessione è un contenitore di informazioni lato server. Ogni sessione è caratterizzata da un identificatore univoco associato ad essa (session Id). 
 
 ## 114. Che cos'è RAZOR?
 Razor è un **template engine**, cioè è un sistema che prende delle strutture comuni e le restituisce all'utente, cioè ci aiuta a creare delle pagine dinamiche HTML. 
@@ -599,6 +610,29 @@ Compara se questi due elementi sono effettivamente uguali, mentre utilizzando Eq
 
 ## 120. Che cos'è un claim?
 Rappresenta ciò che richiede il server per considerare autenticato un utente, è una combinazione chiave/valore.
+
+## 121. Che cos'è la flash?
+Una flash è una sessione che viene utilizzata per uno scambi di dati da una pagina all’altra una sorta di appoggio per i nostri dati.
+
+## 122. Che cos'è JWT e a cosa serve?
+Un JWT è un protocollo RFC 7519, per rappresentare le indicazicazioni in maniera sicura tra due parti. Semplicemente si tratta di un contenitore di dati.
+
+Un JWT è composto tre parti divise da un punto, in cui:
+
+- Header: contiene l’algoritmo di cifratura e il tipo di token.
+- Payload Data: Qualsiasi informazione utile (es. username) e inizialize at segnato come iat.
+    - iat = non è “rinfrescabile”, cioè è una sorta di current tipe stamp cioè ci si sovrá riatuenticare.
+- Verify signature: creata in relazione con le due precedenti: qualsiasi cosa cambia nell’ precedenti, la verify signature anche cambierá.
+
+Cioe, di base potremmo accedere ai dati che salviamo e storiamo del payload. Tuttavia, la signature é del tutto personale e anche provando a rubare i dati nel payload, non potrò mai accedere con quei valori.
+
+## 123. Che cos'è il builder?
+
+## 124. Differenza tra API REST e API RESTFUL?
+
+## 125. Cosa sono i moduli in typescript?
+
+
 
 ---
 
