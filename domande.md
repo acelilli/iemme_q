@@ -685,12 +685,10 @@ Cioè, di base potremmo accedere ai dati che salviamo e storiamo del payload. Tu
 
 ## 125. Cosa sono i moduli in typescript?
 
-<<<<<<< acelilli-100
 ## 126. Cosa intendiamo per proiezioni? (DB)
 
 ## 127. Che cos'è il DTO?
 
-=======
 
 ---
 
