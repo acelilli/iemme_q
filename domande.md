@@ -668,27 +668,38 @@ Rappresenta ciò che richiede il server per considerare autenticato un utente, �
 Una flash è una sessione che viene utilizzata per uno scambi di dati da una pagina all’altra una sorta di appoggio per i nostri dati.
 
 ## 122. Che cos'è JWT e a cosa serve?
-Un JWT è un protocollo RFC 7519, per rappresentare le indicazicazioni in maniera sicura tra due parti. Semplicemente si tratta di un contenitore di dati.
+Json Web Token è un metodo standard di cifratura e di contatto in formato Json per lo scambio di informazioni tra vari servizi di un server. Si genera così un token che può essere cifrato e firmato tramite una chiave disponibile solo da colui che lo ha effitamente generato. La sua caratteristica principale è che è immutabile. 
 
-Un JWT è composto tre parti divise da un punto, in cui:
+- Header: Contiene informazioni su come il token è codificato. Di solito include il tipo di token (JWT) e l'algoritmo di firma utilizzato (ad esempio, HMAC SHA256 o RSA).
+- Payload: Contiene le informazioni (dati) che si desidera trasmettere. Questo può includere dichiarazioni (claims) come l'identità dell'utente, i diritti di accesso e altre informazioni. Le dichiarazioni possono essere di tre tipi:
+Registered claims: dichiarazioni predefinite come iss (issuer), exp (expiration), sub (subject), ecc.
+Public claims: dichiarazioni definite dall'utente che possono essere utilizzate in tutto il mondo.
+Private claims: dichiarazioni create per scopi specifici tra le parti.
 
-- Header: contiene l’algoritmo di cifratura e il tipo di token.
-- Payload Data: Qualsiasi informazione utile (es. username) e inizialize at segnato come iat.
-    - iat = non è “rinfrescabile”, cioè è una sorta di current tipe stamp cioè ci si sovrá riatuenticare.
-- Verify signature: creata in relazione con le due precedenti: qualsiasi cosa cambia nell’ precedenti, la verify signature anche cambierá.
+-Verify signature: viene creata dalla relazione dei due precedenti e anche da una chiave segreta: qualsiasi cosa cambia nell’ precedenti, la verify signature anche cambierá.
+
+
+(Payload Data: Qualsiasi informazione utile (es. username) e inizialize at segnato come iat.
+    - iat = non è “rinfrescabile”, cioè è una sorta di current tipe stamp cioè ci si sovrá riatuenticare)
+
 
 Cioè, di base potremmo accedere ai dati che salviamo e storiamo del payload. Tuttavia, la signature é del tutto personale e anche provando a rubare i dati nel payload, non potrò mai accedere con quei valori.
 
 ## 123. Che cos'è il builder?
+Il builder è un concetto fondamentale in ASP.NET Core che semplifica la configurazione dell'applicazione e la rende più modulare e manutenibile. Attraverso l'uso del builder, puoi facilmente registrare servizi, configurare middleware e gestire le impostazioni di configurazione, rendendo l'intero processo di avvio dell'applicazione più chiaro e strutturato. Si trova nel nostro program.
+
 
 ## 124. Differenza tra API REST e API RESTFUL?
+Le richieste API REST possono includere dati per POST, PUT e altri metodi HTTP per funzionare correttamente. Le richieste API RESTful possono includere parametri che forniscono al server più dettagli su ciò che deve essere fatto.
 
 ## 125. Cosa sono i moduli in typescript?
+In TypeScript, i moduli sono una funzionalità per organizzare e strutturare il codice suddividendolo in blocchi riutilizzabili e separati gli esportiamo attraverso (export),  e  possono essere importati (import) e utilizzati in altre parti del progetto. I moduli consentono di isolare il codice e gestire meglio le dipendenze tra le diverse parti di un'applicazione.
 
 ## 126. Cosa intendiamo per proiezioni? (DB)
+Si riferisce all'operazione di selezione di specifiche colonne di una tabella, anziché tutte le colonne disponibili. In altre parole, una proiezione consente di ottenere solo una parte dei dati di una tabella, riducendo il numero di colonne visualizzate e restituendo soltanto quelle di interesse.
 
 ## 127. Che cos'è il DTO?
-
+Data Transfert Object, è una coppia della nostra Entità (Oggetto) che verra visualizzata dall'utente finale, essa nasconde i dati sensibili e quelli non supperflui dunque contiene meno attributi per essempio non ha l'Id. Mantengono la separazione tra le entità del database e i dati esposti all’esterno. Questo traspasso di infomazione avviene nel Services.
 
 ---
 
