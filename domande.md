@@ -672,24 +672,26 @@ Json Web Token è un metodo standard di cifratura e di contatto in formato Json 
 
 - Header: Contiene informazioni su come il token è codificato. Di solito include il tipo di token (JWT) e l'algoritmo di firma utilizzato (ad esempio, HMAC SHA256 o RSA).
 - Payload: Contiene le informazioni (dati) che si desidera trasmettere. Questo può includere dichiarazioni (claims) come l'identità dell'utente, i diritti di accesso e altre informazioni. Le dichiarazioni possono essere di tre tipi:
-Registered claims: dichiarazioni predefinite come iss (issuer), exp (expiration), sub (subject), ecc.
-Public claims: dichiarazioni definite dall'utente che possono essere utilizzate in tutto il mondo.
-Private claims: dichiarazioni create per scopi specifici tra le parti.
-
+   - Registered claims: dichiarazioni predefinite come iss (issuer), exp (expiration), sub (subject), ecc.
+   - Public claims: dichiarazioni definite dall'utente che possono essere utilizzate in tutto il mondo.
+   - Private claims: dichiarazioni create per scopi specifici tra le parti.
 -Verify signature: viene creata dalla relazione dei due precedenti e anche da una chiave segreta: qualsiasi cosa cambia nell’ precedenti, la verify signature anche cambierá.
-
 
 (Payload Data: Qualsiasi informazione utile (es. username) e inizialize at segnato come iat.
     - iat = non è “rinfrescabile”, cioè è una sorta di current tipe stamp cioè ci si sovrá riatuenticare)
 
-
 Cioè, di base potremmo accedere ai dati che salviamo e storiamo del payload. Tuttavia, la signature é del tutto personale e anche provando a rubare i dati nel payload, non potrò mai accedere con quei valori.
 
 ## 123. Che cos'è il builder?
+Tutto ciò che si chiama builder si usa per costruire la app.
+
 Il builder è un concetto fondamentale in ASP.NET Core che semplifica la configurazione dell'applicazione e la rende più modulare e manutenibile. Attraverso l'uso del builder, puoi facilmente registrare servizi, configurare middleware e gestire le impostazioni di configurazione, rendendo l'intero processo di avvio dell'applicazione più chiaro e strutturato. Si trova nel nostro program.
 
-
 ## 124. Differenza tra API REST e API RESTFUL?
+RESTFUL gli endpoint sono uniformi, quindi non viene identificato il metodo. Identifica ciò che serve a seconda del metodo con lo stesso identico endpoint (in un certo senso come se si facesse overload).
+
+REST invece Identifica il metodo nell’endpoint.
+
 Le richieste API REST possono includere dati per POST, PUT e altri metodi HTTP per funzionare correttamente. Le richieste API RESTful possono includere parametri che forniscono al server più dettagli su ciò che deve essere fatto.
 
 ## 125. Cosa sono i moduli in typescript?
