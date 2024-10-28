@@ -703,6 +703,8 @@ Si riferisce all'operazione di selezione di specifiche colonne di una tabella, a
 ## 127. Che cos'è il DTO?
 Data Transfert Object, è una coppia della nostra Entità (Oggetto) che verra visualizzata dall'utente finale, essa nasconde i dati sensibili e quelli non supperflui dunque contiene meno attributi per essempio non ha l'Id. Mantengono la separazione tra le entità del database e i dati esposti all’esterno. Questo traspasso di infomazione avviene nel Services.
 
+## 128. Che cos'è il logger?
+
 ---
 
 ## stringa di comando per fare push
