@@ -745,6 +745,7 @@ La **SHARD KEY** deve essere presente su tutti i documenti di una collezione. In
 
 ## 132. Che vuol dire quindi splitting? E balancing?
 **SPLITTING** ⇒ se un chunk cresce troppo in dimensione, esso viene splittato in più parti. L’operazione viene eseguita in un server, creando le repliche, ma non comprende la migrazione su un server.
+
 **BALANCING** ⇒ il balancer viene eseguito in background e tiene traccia del numero di chunk gestito da ciascun server. In caso di allocazione non bilanciata, il balancer provvede a migrare i chunk tra server differenti. 
 
 ## 133. Che vuol dire embedding?
