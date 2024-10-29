@@ -758,13 +758,29 @@ Per **EMBEDDING** si intende l'inserimento di informazoni di un’altra collezio
 ## 135. Cos'è la pipe?
 È un insieme di funzioni. Scritta come una arrow function che esegue un numero di funzioni prestabilite e in un certo ordine in cui il valore dell'operazione corrente è il risultato della precedente e così via. Es.:
 
-`const aggiungi2 = (numero) => numero + 2;`
+` /const aggiungi2 = (numero) => numero + 2;`
 
-`const quadrato = (numero) => numero * numero;`
-
-`const funzioni = pipe(aggiungi2, quadrato);`
-
-`const pipe = (...funzioni) => (valore) => funzioni.reduce((val, funz) => funz(val), valore);`
+        ` const moltiplicaPer3 = (numero) => numero * 3;`
+        
+        ` const elevaAlQuadrato = (numero) => numero * numero;`
+        
+ 
+        const pipe = (...functions) => (valIniziale) =>
+        
+            functions.reduce((value, func) => func(value), valIniziale);
+            
+ 
+ 
+        // /*
+        //     const functions = [
+        //         aggiungi2,
+        //         moltiplicaPer3,
+        //         elevaAlQuadrato,
+        //     ]
+        // */
+ 
+  ` /const calcolatrice = pipe(aggiungi2, moltiplicaPer3, elevaAlQuadrato)`
+  ` console.log(calcolatrice(2))`
 
 Serve a concatenare delle funzioni che devono venire eseguite una dopo l'altra. 
 
