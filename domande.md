@@ -705,6 +705,56 @@ Data Transfert Object, è una coppia della nostra Entità (Oggetto) che verra vi
 
 ## 128. Che cos'è il logger?
 
+## 129. Cos'è MongoDb?
+MongoDb è un tipo di database NoSQL, cioè si occupa di:
+
+- Gestione di dati ETEROGENEI e complessivengono salvati in DOCUMENTI (una tupla) scritti totalmente in JSON.
+- Un documento è fatto come segue, in pratica rappresenta un FILE nel computer:
+`{ `
+
+ `	"nominativo" : "Giovanni Pace", `
+ 
+ `	"documento" : { `
+ 
+ `		"tipo" : "CI", `
+ 
+ `		"codice" : "AB1234", `
+ 
+ `	}, `
+ 
+ `	"hobbies" : ["suonare", "astronomia"] `
+ 
+ `}  `
+- Tanti documenti dello stesso tipo (cioè che descrivono la stessa tematica) si chiamano COLLEZIONI. Una collezione è un raggruppamento di tematiche.
+- MongoDB è FLESSIBILE: vedendo come è strutturato il documento citato sopra, vediamo che viola la **normalizzazione dei dati** (cioè la capacità di una cella di una tabella di contenere un solo dato alla volta).
+- Per i motivi sopra citati, un documento ha un limite di 16MB per ogni singolo documento.
+- MongoDB **non ha lo SCHEMA**, però si può imporre grazie all’approccio CODE FIRST nella nostra business logic, in pratica viene obbligato. Altrimenti, mongoDB compass può dedurre lo schema della nostra collezione, tuttavia non lo crea veramente.
+
+## 130. Ci sono gli indici in MongoDB?
+
+## 131. Cosa vuol dire sharding? Cosa sono gli shard e cosa si intende per shard key?
+**SHARDING** ⇒ processo di suddivisione dei dati su un cluster di server MongoDB (database distribuito). Capacità del database di essere frazionato su più server, più computer. Prendiamo in esempio un archivio: posso avere i documenti dalla A alla M da un lato e dalla M alla Z da un altro. Quindi definiamo un CONCETTO DI FRAMMENTAZIONE DEI DATI per aumentare l’efficienza, dividendoli in **SHARD**. Se i files sono definiti su server diversi allora la ricerca potrà perfino avvenire in parallelo!
+
+ Perché distribuire i dati?
+ - Maggiore storage
+ - Maggiore capacità computazionale
+ - Ridondanza dei dati
+ - Disponibilità del servizio
+
+La **SHARD KEY** deve essere presente su tutti i documenti di una collezione. In base al valore della chiave, si suddivide la collezione in segmenti, detti *chunks*. Ai gruppi di chunks vengono assegnati ai diversi nodi del cluster…come si mette un documento su un chunk o su un altro? Visto che ogni chunk ha unachiave allora viene individuato il valore massimo e minimo di una chiave, ogni chunk corrisponde ad un intervallo. tuttavia non è sostenibile nel tempo. Ad ogni chiave viene messo un valore di sharding.
+
+## 132. Che vuol dire quindi splitting? E balancing?
+**SPLITTING** ⇒ se un chunk cresce troppo in dimensione, esso viene splittato in più parti. L’operazione viene eseguita in un server, creando le repliche, ma non comprende la migrazione su un server.
+**BALANCING** ⇒ il balancer viene eseguito in background e tiene traccia del numero di chunk gestito da ciascun server. In caso di allocazione non bilanciata, il balancer provvede a migrare i chunk tra server differenti. 
+
+## 133. Che vuol dire embedding?
+Per **EMBEDDING** si intende l'inserimento di informazoni di un’altra collezione nell’altra (creando ridondanza dei dati). Però questo rende la struttura è pericolosa perchè effettivamente NON ci sono vincoli nelle relazioni tra le tabelle, dovremmo quindi almeno nella business logic fare più calcoli per garantire l’integrità dei dati.
+
+## 134. Perchè utilizzare SQLServer oppure MongoDb? Quali sono le differenze sostanziali?
+- L'assenza di vincoli relazionali e dello schema in MongoDb
+- Si utilizza quindi mongoDB per dati enormi dei quali non si conosce la struttura.
+
+
 ---
 
 ## stringa di comando per fare push
