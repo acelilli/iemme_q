@@ -13,8 +13,9 @@ Invece il dbms, cioè il **database management system** è il processo che riesc
   CREATE TABLE MiaTabella(
   dato VARCHAR(250) NOT NULL
   );
+  
   DROP TABLE MiaTabella;
-  DROP DATABASE ilMioDb;```
+  DROP DATABASE ilMioDb;
 
 - **DML** : *Data Manipulation Language* ⇒ inserisce, modifice, elimina, insomma manipola i dati già creati nelle strutture
 - **QL** : *Querying language* ⇒ tutto ciò che ci serve per leggere i dati ed estrarre nuove informazioni.
