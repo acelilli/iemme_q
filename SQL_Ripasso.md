@@ -19,7 +19,7 @@ Invece il dbms, cioè il **database management system** è il processo che riesc
 
 - **DML** : *Data Manipulation Language* ⇒ inserisce, modifica, elimina, insomma manipola i dati già creati nelle strutture.
 *Es.:*
-```sql
+  ```sql
   INSERT INTO patients(first_name, last_name, allergies. weight)
   VALUES('Mario', 'Rossi' , null, 110);
 
@@ -28,10 +28,12 @@ Invece il dbms, cioè il **database management system** è il processo che riesc
   WHERE allergies IS NULL;
 
   DELETE FROM MyTable WHERE first_name = 'Mario' AND last_name = 'Rossi' AND cf = 'RSSMRO12345'
-```
+  ```
 - **QL** : *Querying language* ⇒ tutto ciò che serve per leggere i dati ed estrarre nuove informazioni.
 *Es.:*
-```sql
+  ```sql
+  SELECT * FROM patients;
+  
   SELECT first_name, last_name, gender
   FROM patients
   WHERE gender = 'M';
@@ -48,4 +50,9 @@ Invece il dbms, cioè il **database management system** è il processo che riesc
   SELECT first_name, last_name
   FROM patients
   WHERE weight BETWEEN 100 AND 120;
-```
+
+  SELECT CONCAT(first_name,' ', last_name) AS full_name
+  FROM patients;
+  ```
+***N.B.:** Nel caso delle select, possiamo parlare di PROIEZIONE. Cioè una sorta di *filtro* che crea una sorta di tabella ‘virtuale’ dove vengono depositati i dati della ricerca che sta venendo effettuata. In pratica si riferisce al processo di selezionare determinate colonne da una tabella, escludendone altre. Parliamo di proiezione verticale quando selezioniamo le colonne di una tabella (es.: ` SELECT first_name, last_name, gender FROM patients`) mentre parliamo di proiezione orizzontale quando ci riferiamo ad alcuni dati specifici dei record (es.:` SELECT first_name, last_name, gender FROM patients WHERE gender = 'M'`)
+  
