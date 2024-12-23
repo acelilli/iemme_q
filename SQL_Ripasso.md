@@ -4,5 +4,17 @@ Un **database** è un archivio di dati che ci permette di gestire la PERMANENZA 
 
 Invece il dbms, cioè il **database management system** è il processo che riesce a gestire il db file. Per esempio SSMS, MySql, Apache…L’ unico modo che abbiamo per interagire con un database è tramite un DBMS. Più o meno tutti i dbms utilizzano circa lo stesso linguaggio, tuttavia hanno dei ‘dialetti’ che li differenziano tra loro, e ogni parte del linguaggio è divisa per *competenze*. Ad esempio abbiamo:
 - **DDL** : *Data Definition Language* ⇒ Quando dobbiamo effettuare delle operazioni di salvataggio di dati, creiamo prima di tutto una struttura, a questo serve il DDL. Serve a gestire LO SCHEMA. Lo schema è la parte invariante del database (o meglio, cambia con una cadenza molto lenta) quindi è l’istanza del database.
-- **DML** : *Data Manipulation Language* ⇒ inserisco, modifico, elimina, insomma manipola i dati già creati nelle strutture
+**Es.:** ```sql
+CREATE DATABASE nomeDB;
+DROP DATABASE nomeDB;
+
+USE nomeDB;
+
+CREATE TABLE MyTable(
+  proprieta VARCHAR(250) NOT NULL
+);
+
+DROP TABLE MyTable;
+```
+- **DML** : *Data Manipulation Language* ⇒ inserisce, modifice, elimina, insomma manipola i dati già creati nelle strutture
 - **QL** : *Querying language* ⇒ tutto ciò che ci serve per leggere i dati ed estrarre nuove informazioni.
