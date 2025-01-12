@@ -438,12 +438,96 @@ END CATCH;
 ---
 
 ### Stored Procedures
+Creazione ed esecuzione di una Stored procedure semplice:
+```sql
+CREATE PROCEDURE NomeProcedura
+AS
+BEGIN
+  -- Operazioni da eseguire
+  SELECT * FROM NomeTabella;
+END;
+
+EXEC NomeProcedura;
+```
+
+Creazione ed esecuzione di una SP parametrica:
+```sql
+CREATE PROCEDURE NomeProceduraConParametri
+  @Parametro1 INT,
+  @Parametro2 VARCHAR(50)
+AS
+BEGIN
+  -- Operazioni che usano i parametri
+  SELECT * FROM NomeTabella WHERE Colonna = @Parametro1;
+END;
+
+-- Esecuzione della Stored Procedure con parametri
+EXEC NomeProceduraConParametri 10, 'Test';
+```
 
 ---
 ### Altre operazioni
   #### 1. COUNT, ORDER BY, operazioni matematiche e PRINT
+  ```sql
+  -- Utilizzo di COUNT e ORDER BY
+  SELECT Colonna, COUNT(*)
+  FROM NomeTabella
+  GROUP BY Colonna
+  ORDER BY COUNT(*) DESC;
+  
+  -- Operazioni matematiche
+  SELECT Colonna1, Colonna2, (Colonna1 + Colonna2) AS Somma
+  FROM NomeTabella;
+  
+  -- Uso di PRINT per messaggi
+  PRINT 'Operazione completata';
+  ```
   #### 2. NEWID()
-  #### 3. CURSORE
+  ```sql
+  ```
+  #### 3. CURSORE, FETCH e OFFSET
+  //bozza dagli appunti disordinati
   Il CURSORE è un elemento che seleziona. Seleziona ogni singola riga, in altre parole, è un ciclo!
   Con OFFSET diciamo al cursore da dove partire. OFFSET 1 ROWS parte dalla seconda riga, OFFSET 2 ROWS partirà dalla terza ecc.
-  #### 5. FETCH
+  ```sql
+  -- Creazione di un cursore
+  DECLARE NomeCursore CURSOR FOR
+  SELECT Colonna
+  FROM NomeTabella;
+  
+  -- Dichiarazione di una variabile per memorizzare il risultato del cursore
+  DECLARE @Valore INT;
+  
+  -- Apertura del cursore
+  OPEN NomeCursore;
+  
+  -- Iterazione sul cursore
+  FETCH NEXT FROM NomeCursore INTO @Valore;
+  WHILE @@FETCH_STATUS = 0
+  BEGIN
+    -- Operazioni da eseguire su ogni riga selezionata
+    PRINT @Valore;
+  
+    -- Avanzamento alla riga successiva
+    FETCH NEXT FROM NomeCursore INTO @Valore;
+  END;
+  
+  -- Chiusura e deallocazione del cursore
+  CLOSE NomeCursore;
+  DEALLOCATE NomeCursore;
+  ```
+
+Possiamo utilizare offset per saltare delle righe:
+```sql
+SELECT *
+FROM NomeTabella
+ORDER BY Colonna
+OFFSET 1 ROWS; -- Parte dalla seconda riga
+
+-- Con FETCH per limitare il numero di righe
+SELECT *
+FROM NomeTabella
+ORDER BY Colonna
+OFFSET 2 ROWS
+FETCH NEXT 5 ROWS ONLY; -- Recupera 5 righe dopo la terza
+```
