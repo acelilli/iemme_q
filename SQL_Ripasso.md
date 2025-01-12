@@ -112,11 +112,68 @@ CREATE TABLE MiaTabellaDocumenti(
 );
 ```
 **N.B.:** Nello specifico:
+- La foreign key, o il **VINCOLO DI INTEGRITÀ RELAZIONALE** è una chiave di riferimento ad una tabella esterna, sottoforma numerica. Serve a garantire l'integrità e la coerena dei dati  tra le due tabelle. Una foreign key quindi **non può** essere null e **non può** fare riferimento ad una chiave primaria che non esiste. Possiamo definirla come una **CONSTRAINT** cioè *impone un vincolo di controllo* su una colonna di associazione.
 - Tramite `ON DELETE CASCADE` specifichiamo che quando un record nella tabella referenziata (MiaTabella) viene eliminato, allora anche i record associati nella tabella MiaTabellaDocumenti verranno eliminati automaticamente.
 - Con `UNIQUE(idDoc, idUtente)` assicuriamo che non ci siano duplicati nella combinazione di un certo idDoc con un idUtente.
 
 ---
 
 ### Relazioni tra tabelle
+Le relazioni tra tabelle possono essere di tra tipi e ciascuna relazione che intercorre tra due elementi deve avere un nome.
+
+- Uno ad uno ⇒ Un record in una tabella è associato ad uno ed un solo record in un'altra tabella, e viceversa. Es.: Una persona possiede un codice fiscale.
+  ```sql
+  CREATE TABLE Persone (
+    idPersona INT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+  );
+
+  CREATE TABLE CodiciFiscali (
+    idCodiceFiscale INT PRIMARY KEY,
+    codice_fiscale CHAR(16) NOT NULL UNIQUE,
+    idPersona_FK INT UNIQUE, 
+    FOREIGN KEY (idPersona_FK) REFERENCES Persone(idPersona) ON DELETE CASCADE
+  );
+  ```
+- Uno a molti ⇒ Un record in una tabella può essere associato ad uno o più record in un'altra tabella, ma un record nella seconda tabella può essere associato solamente ad un record nella prima tabella. Es.: Una persona può possedere una o più carte fedeltà. Ma una carta fedeltà può essere posseduta solo da una persona.
+```sql
+  CREATE TABLE Persone (
+    idPersona INT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+  );
+
+  CREATE TABLE CarteFedelta (
+    idCarta INT PRIMARY KEY,
+    numero_carta VARCHAR(50) NOT NULL UNIQUE,
+    idPersona_FK INT NOT NULL,
+    FOREIGN KEY (idPersona_FK) REFERENCES Persone(idPersona) ON DELETE CASCADE
+  );
+```
+- Molti a molti ⇒ Un record in una tabella può essere associato a uno o più record in un'altra tabella e viceversa. Questo tipo di relazione necessita di una *tabella di associazione* (per rispettare il principio della normalizzazione del dato). Es.: Uno studente può essere iscritto a uno o più corsi. Un corso può avere uno o più studenti iscritti (la *tabella di associazione* potrà essere 'Iscrizioni').
+ ```sql
+  CREATE TABLE Studenti (
+  idStudente INT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Corsi (
+  idCorso INT PRIMARY KEY,
+  nome_corso VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Iscrizioni (
+  idStudente_FK INT NOT NULL,
+  idCorso_FK INT NOT NULL,
+  UNIQUE (idStudente_FK, idCorso_FK), -- Chiave ELETTA*
+  FOREIGN KEY (idStudente_FK) REFERENCES Studenti(idStudente) ON DELETE CASCADE,
+  FOREIGN KEY (idCorso_FK) REFERENCES Corsi(idCorso) ON DELETE CASCADE
+);
+```
+
+**NB.:** In un database relazionale vige la regola della *normalizzazione del dato*. Ciò vuol dire che la molteplicità di dati all'interno di una cella **non è tollerata**. Ogni cella contiene un solo valore.
+
+* **Chiave Eletta** ⇒ o anche detta *chiave candidata*, in assenza di una primary key definita la chiave eletta si occupa di identificare univocamente i record. Può venire utilizzata quando la nostra tabella *non* necessita di un identificatore principale (primary key).
+  
+---
 
 ### Indice, Join, Transaction e Group by
