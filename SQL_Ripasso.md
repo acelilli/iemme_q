@@ -215,14 +215,14 @@ Ci sono diversi tipi di Join. Tra cui:
   ```
   
 - Left join ⇒ Il risultato mostrerà ciò che é in comune più tutto ciò che si trova nella tabella di partenza. Cioè tutti i record della tabella prima del FROM e i record corrispondenti della tabella di destra. Se non ci sono corrispondenze, i valori della tabella di destra verranno visualizzati come NULL. Es.:
-```sql
-  SELECT Persone.nome, CarteFedelta.numero_carta
-  FROM Persone
-  LEFT JOIN CarteFedelta
-  ON Persone.idPersona = CarteFedelta.idPersona_FK;
-
-  -- Il risultato mostrerà tutti i nomi della tabella persone e tutte le carte fedeltà, se non esiste una carta per un record, il valore della cartà sarà NULL.
-  ```
+  ```sql
+    SELECT Persone.nome, CarteFedelta.numero_carta
+    FROM Persone
+    LEFT JOIN CarteFedelta
+    ON Persone.idPersona = CarteFedelta.idPersona_FK;
+  
+    -- Il risultato mostrerà tutti i nomi della tabella persone e tutte le carte fedeltà, se non esiste una carta per un record, il valore della cartà sarà NULL.
+    ```
 - Right join ⇒ Il risultato mostrerà ciò che è in comune più ciò che si trova nella tabella non di partenza (quella dopo il JOIN), se non ci sono corrispondenze vengono restituiti i record della tabella di sinistra impostati su null. Es.:
   ```sql
   SELECT Persone.nome, CarteFedelta.numero_carta
