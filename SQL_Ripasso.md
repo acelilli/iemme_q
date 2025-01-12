@@ -335,3 +335,115 @@ SELECT * FROM VistaPersoneCarte;
 
 ---
 
+### Transactions
+La TRANSACTION é un blocco di codice sicuro che raccoglie una o più operazioni. Le operazioni contenute all'interno del blocco della transaction avviengono prima a livello di ram (memoria non permanente) e, se tutto va a buon fine  vengono *committate* nel database, assicurando l’operazione nella memoria permanente. Se invece non vanno a buon fine viene eseguito il *ROLLBACK*, che farà tornare il database allo stato precedente, come se la transaction non fosse mai avvenuta.
+
+In altre parole garantisce che tutte le operazioni al suo interno vengano eseguite come un'unità **atomica**: o tutte vengono completate correttamente oppure nessuna ha effetto. Per questo si dice che sia una **OPERAZIONE PRIORITARIA**: niente può intromettersi nell'esecuzione della transaction. 
+
+Una transaction viene utilizata quando si devono eseguire dei blocchi di più operazioni che spesso dipendono l'una dall'altra o che coinvolgono una o più tabelle: in questo modo se la transizione si blocca o fallisce tutte le modifiche vengono annullate automaticamente, evitando che il database rimanga in uno stato incoerente. Senza le transazioni, ciascuna operazione è indipendente l'una dall'altra, quindi non vengono utilizzate per una singola operazione.
+
+Una volta che una transazione è stata completata (committata) le modifiche sono permanenti, anche in caso di crash.(NB.: **Principi ACID** - Atomicità, Constenza, Isolamento, Durabilità).
+
+Alla transaction possiamo abbinare il blocco `try-catch` per garantire più robustezza alle nostre operazioni.
+
+```sql
+-- Scheletro di una transaction:
+BEGIN TRY
+  BEGIN TRANSACTION
+  -- Operazioni
+  COMMIT;
+END TRY
+BEGIN CATCH
+ROLLBACK;
+  PRINT 'Errore durante la transazione. Tutte le modifiche sono state annullate'
+END CATCH;
+
+-- Esempio di una transaction
+BEGIN TRY
+  BEGIN TRANSACTION;  
+  INSERT INTO Persone (nome, cognome, città)
+  VALUES ('Mario', 'Rossi', 'Roma');
+  INSERT INTO CarteFedelta (numero_carta, idPersona_FK)
+  VALUES ('1234567890', 10);
+  
+  COMMIT;  -- Applica le modifiche in modo permanente se le operazioni vanno a buon fine
+END TRY
+BEGIN CATCH
+  ROLLBACK;
+  PRINT 'Errore durante la transazione. Tutte le modifiche sono state annullate'
+END CATCH;
+```
+
+Dichiarare delle variabili può essere utile nel contesto di una transazione, ad esempio se vogliamo manipolare o calcolare dei valori durante una transazione senza doverli memorizzare nelle tabelle. Es.:
+```sql
+-- Semplice dichiarazione di una variabile in SQLServer:
+DECLARE @miaVar VARCHAR(250) = 'Ciao' 
+SELECT @miaVar;
+
+-- Esempio di dichiarazione di una variabile e utilizzo all'interno di una transaction.
+-- Trasferiamo un saldo da un conto (con id = 1) ad un altro (con id =2):
+DECLARE @importoTransferito DECIMAL(10,2);
+SET @importoTransferito = 100;
+
+BEGIN TRY
+  BEGIN TRANSACTION
+    UPDATE ContiBancari
+    SET saldo = saldo - @importoTransferito
+    WHERE idConto = 1;
+
+    UPDATE ContiBancari
+    SET saldo = saldo + @importoTransferito
+    WHERE idConto = 2;
+  COMMIT;
+END TRY
+BEGIN CATCH
+ROLLBACK;
+  PRINT 'Errore durante la transazione. Tutte le modifiche sono state annullate'
+END CATCH;
+```
+Possiamo inoltre rendere la struttura più solida con dei controlli if/else:
+```sql
+-- Utilizzanbdo la stessa struttura, controlliamo che nel conto con id = 1 ci sia abbastanza denaro. Quindi:
+DECLARE @importoTransferito DECIMAL(10,2);
+SET @importoTransferito = 100;
+
+BEGIN TRY
+  BEGIN TRANSACTION
+    UPDATE ContiBancari
+    SET saldo = saldo - @importoTransferito
+    WHERE idConto = 1;
+
+-- Verifichiamo che il saldo sia sufficente.
+-- Se il saldo è minore di 0 allora facciamo rollback.
+    IF(SELECT saldo FROM ContiBancari WHERE idConto = 1) < 0
+      BEGIN
+        ROLLBACK;
+        PRINT 'Errore: saldo insufficiente';
+      END
+-- Se il saldo non è minore di 0 allora completiamo l'operazione sul conto 2:
+    ELSE
+      BEGIN
+      UPDATE ContiBancari
+      SET saldo = saldo + @importoTransferito
+      WHERE idConto = 2;
+    COMMIT;
+END TRY
+BEGIN CATCH
+ROLLBACK;
+  PRINT 'Errore durante la transazione. Tutte le modifiche sono state annullate'
+  PRINT 'Dettagli errore:';
+  PRINT ERROR_MESSAGE(); 
+END CATCH;
+```
+---
+
+### Stored Procedures
+
+---
+### Altre operazioni
+  #### 1. COUNT, ORDER BY, operazioni matematiche e PRINT
+  #### 2. NEWID()
+  #### 3. CURSORE
+  Il CURSORE è un elemento che seleziona. Seleziona ogni singola riga, in altre parole, è un ciclo!
+  Con OFFSET diciamo al cursore da dove partire. OFFSET 1 ROWS parte dalla seconda riga, OFFSET 2 ROWS partirà dalla terza ecc.
+  #### 5. FETCH
